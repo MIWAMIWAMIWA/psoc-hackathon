@@ -1,0 +1,91 @@
+/*******************************************************************************
+* File Name: Sound4.h
+* Version 2.20
+*
+*  Description:
+*   Provides the function and constant definitions for the clock component.
+*
+*  Note:
+*
+********************************************************************************
+* Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+* You may use this file only in accordance with the license, terms, conditions, 
+* disclaimers, and limitations in the end user license agreement accompanying 
+* the software package with which this file was provided.
+*******************************************************************************/
+
+#if !defined(CY_CLOCK_Sound4_H)
+#define CY_CLOCK_Sound4_H
+
+#include <cytypes.h>
+#include <cyfitter.h>
+
+
+/***************************************
+*        Function Prototypes
+***************************************/
+#if defined CYREG_PERI_DIV_CMD
+
+void Sound4_StartEx(uint32 alignClkDiv);
+#define Sound4_Start() \
+    Sound4_StartEx(Sound4__PA_DIV_ID)
+
+#else
+
+void Sound4_Start(void);
+
+#endif/* CYREG_PERI_DIV_CMD */
+
+void Sound4_Stop(void);
+
+void Sound4_SetFractionalDividerRegister(uint16 clkDivider, uint8 clkFractional);
+
+uint16 Sound4_GetDividerRegister(void);
+uint8  Sound4_GetFractionalDividerRegister(void);
+
+#define Sound4_Enable()                         Sound4_Start()
+#define Sound4_Disable()                        Sound4_Stop()
+#define Sound4_SetDividerRegister(clkDivider, reset)  \
+    Sound4_SetFractionalDividerRegister((clkDivider), 0u)
+#define Sound4_SetDivider(clkDivider)           Sound4_SetDividerRegister((clkDivider), 1u)
+#define Sound4_SetDividerValue(clkDivider)      Sound4_SetDividerRegister((clkDivider) - 1u, 1u)
+
+
+/***************************************
+*             Registers
+***************************************/
+#if defined CYREG_PERI_DIV_CMD
+
+#define Sound4_DIV_ID     Sound4__DIV_ID
+
+#define Sound4_CMD_REG    (*(reg32 *)CYREG_PERI_DIV_CMD)
+#define Sound4_CTRL_REG   (*(reg32 *)Sound4__CTRL_REGISTER)
+#define Sound4_DIV_REG    (*(reg32 *)Sound4__DIV_REGISTER)
+
+#define Sound4_CMD_DIV_SHIFT          (0u)
+#define Sound4_CMD_PA_DIV_SHIFT       (8u)
+#define Sound4_CMD_DISABLE_SHIFT      (30u)
+#define Sound4_CMD_ENABLE_SHIFT       (31u)
+
+#define Sound4_CMD_DISABLE_MASK       ((uint32)((uint32)1u << Sound4_CMD_DISABLE_SHIFT))
+#define Sound4_CMD_ENABLE_MASK        ((uint32)((uint32)1u << Sound4_CMD_ENABLE_SHIFT))
+
+#define Sound4_DIV_FRAC_MASK  (0x000000F8u)
+#define Sound4_DIV_FRAC_SHIFT (3u)
+#define Sound4_DIV_INT_MASK   (0xFFFFFF00u)
+#define Sound4_DIV_INT_SHIFT  (8u)
+
+#else 
+
+#define Sound4_DIV_REG        (*(reg32 *)Sound4__REGISTER)
+#define Sound4_ENABLE_REG     Sound4_DIV_REG
+#define Sound4_DIV_FRAC_MASK  Sound4__FRAC_MASK
+#define Sound4_DIV_FRAC_SHIFT (16u)
+#define Sound4_DIV_INT_MASK   Sound4__DIVIDER_MASK
+#define Sound4_DIV_INT_SHIFT  (0u)
+
+#endif/* CYREG_PERI_DIV_CMD */
+
+#endif /* !defined(CY_CLOCK_Sound4_H) */
+
+/* [] END OF FILE */

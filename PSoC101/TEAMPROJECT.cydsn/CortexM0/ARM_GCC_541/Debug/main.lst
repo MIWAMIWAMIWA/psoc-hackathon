@@ -1,0 +1,2210 @@
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.set_speed,"ax",%progbits
+  20              		.align	2
+  21              		.global	set_speed
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	set_speed, %function
+  25              	set_speed:
+  26              	.LFB32:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** 
+  13:main.c        **** #include "project.h"
+  14:main.c        **** #define INFO_INDEX       (0x00)
+  15:main.c        **** #define BUTTON_INDEX      (0x01)
+  16:main.c        **** #define SPEED_INDEX       (0x02)
+  17:main.c        **** 
+  18:main.c        **** uint8 ezI2cBuffer[3]={0x40,0,1};
+  19:main.c        **** 
+  20:main.c        **** 
+  21:main.c        **** void set_speed(uint8 x){
+  28              		.loc 1 21 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  22:main.c        ****     ezI2cBuffer[SPEED_INDEX]=x;
+  34              		.loc 1 22 0
+  35 0000 014B     		ldr	r3, .L2
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 2
+
+
+  36 0002 9870     		strb	r0, [r3, #2]
+  23:main.c        **** }
+  37              		.loc 1 23 0
+  38              		@ sp needed
+  39 0004 7047     		bx	lr
+  40              	.L3:
+  41 0006 C046     		.align	2
+  42              	.L2:
+  43 0008 00000000 		.word	.LANCHOR0
+  44              		.cfi_endproc
+  45              	.LFE32:
+  46              		.size	set_speed, .-set_speed
+  47              		.section	.text.set_button,"ax",%progbits
+  48              		.align	2
+  49              		.global	set_button
+  50              		.code	16
+  51              		.thumb_func
+  52              		.type	set_button, %function
+  53              	set_button:
+  54              	.LFB33:
+  24:main.c        **** 
+  25:main.c        **** void set_button(uint8 x){
+  55              		.loc 1 25 0
+  56              		.cfi_startproc
+  57              		@ args = 0, pretend = 0, frame = 0
+  58              		@ frame_needed = 0, uses_anonymous_args = 0
+  59              		@ link register save eliminated.
+  60              	.LVL1:
+  26:main.c        ****     ezI2cBuffer[BUTTON_INDEX]=x;
+  61              		.loc 1 26 0
+  62 0000 014B     		ldr	r3, .L5
+  63 0002 5870     		strb	r0, [r3, #1]
+  27:main.c        ****    }
+  64              		.loc 1 27 0
+  65              		@ sp needed
+  66 0004 7047     		bx	lr
+  67              	.L6:
+  68 0006 C046     		.align	2
+  69              	.L5:
+  70 0008 00000000 		.word	.LANCHOR0
+  71              		.cfi_endproc
+  72              	.LFE33:
+  73              		.size	set_button, .-set_button
+  74              		.section	.text.get_led_status,"ax",%progbits
+  75              		.align	2
+  76              		.global	get_led_status
+  77              		.code	16
+  78              		.thumb_func
+  79              		.type	get_led_status, %function
+  80              	get_led_status:
+  81              	.LFB34:
+  28:main.c        **** 
+  29:main.c        **** uint8 get_led_status(){
+  82              		.loc 1 29 0
+  83              		.cfi_startproc
+  84              		@ args = 0, pretend = 0, frame = 0
+  85              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 3
+
+
+  86              		@ link register save eliminated.
+  30:main.c        ****     
+  31:main.c        ****     return ezI2cBuffer[INFO_INDEX] & 15;
+  87              		.loc 1 31 0
+  88 0000 024B     		ldr	r3, .L8
+  89 0002 1B78     		ldrb	r3, [r3]
+  90 0004 0F20     		movs	r0, #15
+  91 0006 1840     		ands	r0, r3
+  32:main.c        ****    
+  33:main.c        **** }
+  92              		.loc 1 33 0
+  93              		@ sp needed
+  94 0008 7047     		bx	lr
+  95              	.L9:
+  96 000a C046     		.align	2
+  97              	.L8:
+  98 000c 00000000 		.word	.LANCHOR0
+  99              		.cfi_endproc
+ 100              	.LFE34:
+ 101              		.size	get_led_status, .-get_led_status
+ 102              		.section	.text.get_pass_status,"ax",%progbits
+ 103              		.align	2
+ 104              		.global	get_pass_status
+ 105              		.code	16
+ 106              		.thumb_func
+ 107              		.type	get_pass_status, %function
+ 108              	get_pass_status:
+ 109              	.LFB35:
+  34:main.c        **** 
+  35:main.c        **** uint8 get_pass_status(){
+ 110              		.loc 1 35 0
+ 111              		.cfi_startproc
+ 112              		@ args = 0, pretend = 0, frame = 0
+ 113              		@ frame_needed = 0, uses_anonymous_args = 0
+ 114              		@ link register save eliminated.
+  36:main.c        ****     return ezI2cBuffer[INFO_INDEX] & 32;
+ 115              		.loc 1 36 0
+ 116 0000 024B     		ldr	r3, .L11
+ 117 0002 1B78     		ldrb	r3, [r3]
+ 118 0004 2020     		movs	r0, #32
+ 119 0006 1840     		ands	r0, r3
+  37:main.c        **** }  
+ 120              		.loc 1 37 0
+ 121              		@ sp needed
+ 122 0008 7047     		bx	lr
+ 123              	.L12:
+ 124 000a C046     		.align	2
+ 125              	.L11:
+ 126 000c 00000000 		.word	.LANCHOR0
+ 127              		.cfi_endproc
+ 128              	.LFE35:
+ 129              		.size	get_pass_status, .-get_pass_status
+ 130              		.section	.text.get_fail_status,"ax",%progbits
+ 131              		.align	2
+ 132              		.global	get_fail_status
+ 133              		.code	16
+ 134              		.thumb_func
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 4
+
+
+ 135              		.type	get_fail_status, %function
+ 136              	get_fail_status:
+ 137              	.LFB36:
+  38:main.c        **** 
+  39:main.c        **** uint8 get_fail_status(){
+ 138              		.loc 1 39 0
+ 139              		.cfi_startproc
+ 140              		@ args = 0, pretend = 0, frame = 0
+ 141              		@ frame_needed = 0, uses_anonymous_args = 0
+ 142              		@ link register save eliminated.
+  40:main.c        ****     return ezI2cBuffer[INFO_INDEX] & 16;
+ 143              		.loc 1 40 0
+ 144 0000 024B     		ldr	r3, .L14
+ 145 0002 1B78     		ldrb	r3, [r3]
+ 146 0004 1020     		movs	r0, #16
+ 147 0006 1840     		ands	r0, r3
+  41:main.c        **** } 
+ 148              		.loc 1 41 0
+ 149              		@ sp needed
+ 150 0008 7047     		bx	lr
+ 151              	.L15:
+ 152 000a C046     		.align	2
+ 153              	.L14:
+ 154 000c 00000000 		.word	.LANCHOR0
+ 155              		.cfi_endproc
+ 156              	.LFE36:
+ 157              		.size	get_fail_status, .-get_fail_status
+ 158              		.section	.text.make_init,"ax",%progbits
+ 159              		.align	2
+ 160              		.global	make_init
+ 161              		.code	16
+ 162              		.thumb_func
+ 163              		.type	make_init, %function
+ 164              	make_init:
+ 165              	.LFB37:
+  42:main.c        **** 
+  43:main.c        **** void make_init(){
+ 166              		.loc 1 43 0
+ 167              		.cfi_startproc
+ 168              		@ args = 0, pretend = 0, frame = 0
+ 169              		@ frame_needed = 0, uses_anonymous_args = 0
+ 170              		@ link register save eliminated.
+  44:main.c        ****     ezI2cBuffer[INFO_INDEX]=ezI2cBuffer[INFO_INDEX] & 191;
+ 171              		.loc 1 44 0
+ 172 0000 024A     		ldr	r2, .L17
+ 173 0002 1378     		ldrb	r3, [r2]
+ 174 0004 4021     		movs	r1, #64
+ 175 0006 8B43     		bics	r3, r1
+ 176 0008 1370     		strb	r3, [r2]
+  45:main.c        **** }
+ 177              		.loc 1 45 0
+ 178              		@ sp needed
+ 179 000a 7047     		bx	lr
+ 180              	.L18:
+ 181              		.align	2
+ 182              	.L17:
+ 183 000c 00000000 		.word	.LANCHOR0
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 5
+
+
+ 184              		.cfi_endproc
+ 185              	.LFE37:
+ 186              		.size	make_init, .-make_init
+ 187              		.section	.text.set_init,"ax",%progbits
+ 188              		.align	2
+ 189              		.global	set_init
+ 190              		.code	16
+ 191              		.thumb_func
+ 192              		.type	set_init, %function
+ 193              	set_init:
+ 194              	.LFB38:
+  46:main.c        **** 
+  47:main.c        **** void set_init(){
+ 195              		.loc 1 47 0
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 0
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199              		@ link register save eliminated.
+  48:main.c        ****     ezI2cBuffer[INFO_INDEX]=128;
+ 200              		.loc 1 48 0
+ 201 0000 8022     		movs	r2, #128
+ 202 0002 014B     		ldr	r3, .L20
+ 203 0004 1A70     		strb	r2, [r3]
+  49:main.c        **** }
+ 204              		.loc 1 49 0
+ 205              		@ sp needed
+ 206 0006 7047     		bx	lr
+ 207              	.L21:
+ 208              		.align	2
+ 209              	.L20:
+ 210 0008 00000000 		.word	.LANCHOR0
+ 211              		.cfi_endproc
+ 212              	.LFE38:
+ 213              		.size	set_init, .-set_init
+ 214              		.section	.text.speedf,"ax",%progbits
+ 215              		.align	2
+ 216              		.global	speedf
+ 217              		.code	16
+ 218              		.thumb_func
+ 219              		.type	speedf, %function
+ 220              	speedf:
+ 221              	.LFB39:
+  50:main.c        **** 
+  51:main.c        **** #define POT_CHAN (0)
+  52:main.c        **** int16 counts = 0;
+  53:main.c        **** int16 mVolts = 0; 
+  54:main.c        **** uint8 speed = 0;
+  55:main.c        **** 
+  56:main.c        ****   int speedf(){
+ 222              		.loc 1 56 0
+ 223              		.cfi_startproc
+ 224              		@ args = 0, pretend = 0, frame = 0
+ 225              		@ frame_needed = 0, uses_anonymous_args = 0
+ 226 0000 10B5     		push	{r4, lr}
+ 227              		.cfi_def_cfa_offset 8
+ 228              		.cfi_offset 4, -8
+ 229              		.cfi_offset 14, -4
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 6
+
+
+  57:main.c        ****   counts = ADC_GetResult16(POT_CHAN);
+ 230              		.loc 1 57 0
+ 231 0002 0020     		movs	r0, #0
+ 232 0004 FFF7FEFF 		bl	ADC_GetResult16
+ 233              	.LVL2:
+ 234 0008 0100     		movs	r1, r0
+ 235 000a 194C     		ldr	r4, .L29
+ 236 000c 2080     		strh	r0, [r4]
+  58:main.c        ****   mVolts = ADC_CountsTo_mVolts(POT_CHAN,counts);
+ 237              		.loc 1 58 0
+ 238 000e 0020     		movs	r0, #0
+ 239 0010 FFF7FEFF 		bl	ADC_CountsTo_mVolts
+ 240              	.LVL3:
+ 241 0014 6080     		strh	r0, [r4, #2]
+  59:main.c        ****             if (mVolts <= 5){
+ 242              		.loc 1 59 0
+ 243 0016 0528     		cmp	r0, #5
+ 244 0018 03DC     		bgt	.L23
+  60:main.c        ****                 speed = 1;
+ 245              		.loc 1 60 0
+ 246 001a 0122     		movs	r2, #1
+ 247 001c 144B     		ldr	r3, .L29
+ 248 001e 1A71     		strb	r2, [r3, #4]
+ 249 0020 0BE0     		b	.L24
+ 250              	.L23:
+  61:main.c        ****             }else if (mVolts > 5 && mVolts < 1000 ){
+ 251              		.loc 1 61 0
+ 252 0022 0638     		subs	r0, r0, #6
+ 253 0024 80B2     		uxth	r0, r0
+ 254 0026 134B     		ldr	r3, .L29+4
+ 255 0028 9842     		cmp	r0, r3
+ 256 002a 03D8     		bhi	.L25
+  62:main.c        ****                 speed = 2; 
+ 257              		.loc 1 62 0
+ 258 002c 0222     		movs	r2, #2
+ 259 002e 104B     		ldr	r3, .L29
+ 260 0030 1A71     		strb	r2, [r3, #4]
+ 261 0032 02E0     		b	.L24
+ 262              	.L25:
+  63:main.c        ****             }else{
+  64:main.c        ****             speed = 4;}
+ 263              		.loc 1 64 0
+ 264 0034 0422     		movs	r2, #4
+ 265 0036 0E4B     		ldr	r3, .L29
+ 266 0038 1A71     		strb	r2, [r3, #4]
+ 267              	.L24:
+  65:main.c        ****         
+  66:main.c        ****  LCD_Position(0,0);
+ 268              		.loc 1 66 0
+ 269 003a 0021     		movs	r1, #0
+ 270 003c 0020     		movs	r0, #0
+ 271 003e FFF7FEFF 		bl	LCD_Position
+ 272              	.LVL4:
+  67:main.c        **** if (speed == 1){
+ 273              		.loc 1 67 0
+ 274 0042 0B4B     		ldr	r3, .L29
+ 275 0044 1B79     		ldrb	r3, [r3, #4]
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 7
+
+
+ 276 0046 012B     		cmp	r3, #1
+ 277 0048 03D1     		bne	.L26
+  68:main.c        ****     LCD_PrintString("SLOW");}
+ 278              		.loc 1 68 0
+ 279 004a 0B48     		ldr	r0, .L29+8
+ 280 004c FFF7FEFF 		bl	LCD_PrintString
+ 281              	.LVL5:
+ 282 0050 08E0     		b	.L27
+ 283              	.L26:
+  69:main.c        **** else if (speed == 2) {
+ 284              		.loc 1 69 0
+ 285 0052 022B     		cmp	r3, #2
+ 286 0054 03D1     		bne	.L28
+  70:main.c        ****     LCD_PrintString("MED");
+ 287              		.loc 1 70 0
+ 288 0056 0948     		ldr	r0, .L29+12
+ 289 0058 FFF7FEFF 		bl	LCD_PrintString
+ 290              	.LVL6:
+ 291 005c 02E0     		b	.L27
+ 292              	.L28:
+  71:main.c        **** }else {
+  72:main.c        ****     LCD_PrintString("FAST");}
+ 293              		.loc 1 72 0
+ 294 005e 0848     		ldr	r0, .L29+16
+ 295 0060 FFF7FEFF 		bl	LCD_PrintString
+ 296              	.LVL7:
+ 297              	.L27:
+  73:main.c        ****     LCD_PrintString("    ");
+ 298              		.loc 1 73 0
+ 299 0064 0748     		ldr	r0, .L29+20
+ 300 0066 FFF7FEFF 		bl	LCD_PrintString
+ 301              	.LVL8:
+  74:main.c        **** 
+  75:main.c        **** 
+  76:main.c        ****     return speed;}
+ 302              		.loc 1 76 0
+ 303 006a 014B     		ldr	r3, .L29
+ 304 006c 1879     		ldrb	r0, [r3, #4]
+ 305              		@ sp needed
+ 306 006e 10BD     		pop	{r4, pc}
+ 307              	.L30:
+ 308              		.align	2
+ 309              	.L29:
+ 310 0070 00000000 		.word	.LANCHOR1
+ 311 0074 E1030000 		.word	993
+ 312 0078 00000000 		.word	.LC8
+ 313 007c 08000000 		.word	.LC10
+ 314 0080 0C000000 		.word	.LC12
+ 315 0084 14000000 		.word	.LC14
+ 316              		.cfi_endproc
+ 317              	.LFE39:
+ 318              		.size	speedf, .-speedf
+ 319              		.section	.text.butPressed,"ax",%progbits
+ 320              		.align	2
+ 321              		.global	butPressed
+ 322              		.code	16
+ 323              		.thumb_func
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 8
+
+
+ 324              		.type	butPressed, %function
+ 325              	butPressed:
+ 326              	.LFB40:
+  77:main.c        **** 
+  78:main.c        **** uint8 butPressed(void)
+  79:main.c        **** {
+ 327              		.loc 1 79 0
+ 328              		.cfi_startproc
+ 329              		@ args = 0, pretend = 0, frame = 0
+ 330              		@ frame_needed = 0, uses_anonymous_args = 0
+ 331 0000 70B5     		push	{r4, r5, r6, lr}
+ 332              		.cfi_def_cfa_offset 16
+ 333              		.cfi_offset 4, -16
+ 334              		.cfi_offset 5, -12
+ 335              		.cfi_offset 6, -8
+ 336              		.cfi_offset 14, -4
+ 337              	.LVL9:
+  80:main.c        ****        uint8 but_status = 0;
+  81:main.c        **** 
+  82:main.c        ****         // button #1
+  83:main.c        ****         but_status = but_status | But1_Read();
+ 338              		.loc 1 83 0
+ 339 0002 FFF7FEFF 		bl	But1_Read
+ 340              	.LVL10:
+ 341 0006 0500     		movs	r5, r0
+ 342              	.LVL11:
+  84:main.c        ****         
+  85:main.c        ****         // button #2
+  86:main.c        ****         but_status = but_status | (But2_Read() << 0x01);
+ 343              		.loc 1 86 0
+ 344 0008 FFF7FEFF 		bl	But2_Read
+ 345              	.LVL12:
+ 346 000c 4400     		lsls	r4, r0, #1
+ 347 000e 2543     		orrs	r5, r4
+ 348              	.LVL13:
+ 349 0010 6CB2     		sxtb	r4, r5
+ 350              	.LVL14:
+  87:main.c        ****         
+  88:main.c        ****         // button #3
+  89:main.c        ****         but_status = but_status | (But3_Read() << 0x02);
+ 351              		.loc 1 89 0
+ 352 0012 FFF7FEFF 		bl	But3_Read
+ 353              	.LVL15:
+ 354 0016 8300     		lsls	r3, r0, #2
+ 355 0018 2343     		orrs	r3, r4
+ 356 001a 5CB2     		sxtb	r4, r3
+ 357              	.LVL16:
+  90:main.c        ****         
+  91:main.c        ****         // button #4
+  92:main.c        ****         but_status = but_status | (But4_Read() << 0x03);
+ 358              		.loc 1 92 0
+ 359 001c FFF7FEFF 		bl	But4_Read
+ 360              	.LVL17:
+ 361 0020 C300     		lsls	r3, r0, #3
+ 362 0022 2343     		orrs	r3, r4
+ 363 0024 DBB2     		uxtb	r3, r3
+ 364              	.LVL18:
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 9
+
+
+  93:main.c        ****     
+  94:main.c        ****     return (~but_status) &0x0F;
+ 365              		.loc 1 94 0
+ 366 0026 0F20     		movs	r0, #15
+ 367 0028 9843     		bics	r0, r3
+  95:main.c        **** }
+ 368              		.loc 1 95 0
+ 369              		@ sp needed
+ 370 002a 70BD     		pop	{r4, r5, r6, pc}
+ 371              		.cfi_endproc
+ 372              	.LFE40:
+ 373              		.size	butPressed, .-butPressed
+ 374              		.section	.text.main,"ax",%progbits
+ 375              		.align	2
+ 376              		.global	main
+ 377              		.code	16
+ 378              		.thumb_func
+ 379              		.type	main, %function
+ 380              	main:
+ 381              	.LFB41:
+  96:main.c        **** int main(void)
+  97:main.c        **** {
+ 382              		.loc 1 97 0
+ 383              		.cfi_startproc
+ 384              		@ args = 0, pretend = 0, frame = 0
+ 385              		@ frame_needed = 0, uses_anonymous_args = 0
+ 386 0000 10B5     		push	{r4, lr}
+ 387              		.cfi_def_cfa_offset 8
+ 388              		.cfi_offset 4, -8
+ 389              		.cfi_offset 14, -4
+  98:main.c        ****     uint8 led_status;
+  99:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 390              		.loc 1 99 0
+ 391              		.syntax divided
+ 392              	@ 99 "main.c" 1
+ 393 0002 62B6     		CPSIE   i
+ 394              	@ 0 "" 2
+ 100:main.c        ****     EZI2C_EzI2CSetBuffer1(3,3,ezI2cBuffer);
+ 395              		.loc 1 100 0
+ 396              		.thumb
+ 397              		.syntax unified
+ 398 0004 2E4A     		ldr	r2, .L43
+ 399 0006 0321     		movs	r1, #3
+ 400 0008 0320     		movs	r0, #3
+ 401 000a FFF7FEFF 		bl	EZI2C_EzI2CSetBuffer1
+ 402              	.LVL19:
+ 101:main.c        ****     
+ 102:main.c        ****     
+ 103:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+ 104:main.c        ****     EZI2C_Start();
+ 403              		.loc 1 104 0
+ 404 000e FFF7FEFF 		bl	EZI2C_Start
+ 405              	.LVL20:
+ 105:main.c        ****     ADC_Start();
+ 406              		.loc 1 105 0
+ 407 0012 FFF7FEFF 		bl	ADC_Start
+ 408              	.LVL21:
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 10
+
+
+ 106:main.c        ****     ADC_StartConvert();
+ 409              		.loc 1 106 0
+ 410 0016 FFF7FEFF 		bl	ADC_StartConvert
+ 411              	.LVL22:
+ 107:main.c        ****     LCD_Start();
+ 412              		.loc 1 107 0
+ 413 001a FFF7FEFF 		bl	LCD_Start
+ 414              	.LVL23:
+ 108:main.c        ****     make_init();
+ 415              		.loc 1 108 0
+ 416 001e FFF7FEFF 		bl	make_init
+ 417              	.LVL24:
+ 418              	.L38:
+ 109:main.c        ****     for(;;){
+ 110:main.c        ****    
+ 111:main.c        ****      set_speed(speedf());
+ 419              		.loc 1 111 0
+ 420 0022 FFF7FEFF 		bl	speedf
+ 421              	.LVL25:
+ 422 0026 C0B2     		uxtb	r0, r0
+ 423 0028 FFF7FEFF 		bl	set_speed
+ 424              	.LVL26:
+ 112:main.c        ****     led_status=butPressed();
+ 425              		.loc 1 112 0
+ 426 002c FFF7FEFF 		bl	butPressed
+ 427              	.LVL27:
+ 113:main.c        ****     set_button(led_status);
+ 428              		.loc 1 113 0
+ 429 0030 FFF7FEFF 		bl	set_button
+ 430              	.LVL28:
+ 114:main.c        ****    
+ 115:main.c        ****  
+ 116:main.c        ****         if (0u != (EZI2C_EzI2CGetActivity() & EZI2C_EZI2C_STATUS_WRITE1))
+ 431              		.loc 1 116 0
+ 432 0034 FFF7FEFF 		bl	EZI2C_EzI2CGetActivity
+ 433              	.LVL29:
+ 434 0038 0307     		lsls	r3, r0, #28
+ 435 003a 03D5     		bpl	.L33
+ 117:main.c        ****         {
+ 118:main.c        ****           MasterReg_Write(get_led_status());
+ 436              		.loc 1 118 0
+ 437 003c FFF7FEFF 		bl	get_led_status
+ 438              	.LVL30:
+ 439 0040 FFF7FEFF 		bl	MasterReg_Write
+ 440              	.LVL31:
+ 441              	.L33:
+ 119:main.c        ****           
+ 120:main.c        ****         }
+ 121:main.c        ****         if (get_fail_status()){
+ 442              		.loc 1 121 0
+ 443 0044 FFF7FEFF 		bl	get_fail_status
+ 444              	.LVL32:
+ 445 0048 0028     		cmp	r0, #0
+ 446 004a 08D1     		bne	.L41
+ 447 004c 0FE0     		b	.L35
+ 448              	.LVL33:
+ 449              	.L36:
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 11
+
+
+ 450              	.LBB2:
+ 122:main.c        ****            for(int i =0;i<50;i++){
+ 123:main.c        ****             MasterReg_Write(1);
+ 451              		.loc 1 123 0 discriminator 3
+ 452 004e 0120     		movs	r0, #1
+ 453 0050 FFF7FEFF 		bl	MasterReg_Write
+ 454              	.LVL34:
+ 124:main.c        ****         CyDelay(100);
+ 455              		.loc 1 124 0 discriminator 3
+ 456 0054 6420     		movs	r0, #100
+ 457 0056 FFF7FEFF 		bl	CyDelay
+ 458              	.LVL35:
+ 122:main.c        ****            for(int i =0;i<50;i++){
+ 459              		.loc 1 122 0 discriminator 3
+ 460 005a 0134     		adds	r4, r4, #1
+ 461              	.LVL36:
+ 462 005c 00E0     		b	.L34
+ 463              	.LVL37:
+ 464              	.L41:
+ 465              	.LBE2:
+ 466 005e 0024     		movs	r4, #0
+ 467              	.L34:
+ 468              	.LVL38:
+ 469              	.LBB3:
+ 122:main.c        ****            for(int i =0;i<50;i++){
+ 470              		.loc 1 122 0 is_stmt 0 discriminator 1
+ 471 0060 312C     		cmp	r4, #49
+ 472 0062 F4DD     		ble	.L36
+ 473              	.LBE3:
+ 125:main.c        ****         }
+ 126:main.c        ****        set_init();
+ 474              		.loc 1 126 0 is_stmt 1
+ 475 0064 FFF7FEFF 		bl	set_init
+ 476              	.LVL39:
+ 127:main.c        ****     MasterReg_Write(0);
+ 477              		.loc 1 127 0
+ 478 0068 0020     		movs	r0, #0
+ 479 006a FFF7FEFF 		bl	MasterReg_Write
+ 480              	.LVL40:
+ 481              	.L35:
+ 128:main.c        ****         }
+ 129:main.c        ****         if (get_pass_status()){
+ 482              		.loc 1 129 0
+ 483 006e FFF7FEFF 		bl	get_pass_status
+ 484              	.LVL41:
+ 485 0072 0028     		cmp	r0, #0
+ 486 0074 D5D0     		beq	.L38
+ 487 0076 19E0     		b	.L42
+ 488              	.LVL42:
+ 489              	.L39:
+ 490              	.LBB4:
+ 130:main.c        ****             for(int i =0;i<10;i++){
+ 131:main.c        ****             MasterReg_Write(1);
+ 491              		.loc 1 131 0 discriminator 3
+ 492 0078 0120     		movs	r0, #1
+ 493 007a FFF7FEFF 		bl	MasterReg_Write
+ 494              	.LVL43:
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 12
+
+
+ 132:main.c        ****        CyDelay(100);
+ 495              		.loc 1 132 0 discriminator 3
+ 496 007e 6420     		movs	r0, #100
+ 497 0080 FFF7FEFF 		bl	CyDelay
+ 498              	.LVL44:
+ 133:main.c        ****        MasterReg_Write(2);
+ 499              		.loc 1 133 0 discriminator 3
+ 500 0084 0220     		movs	r0, #2
+ 501 0086 FFF7FEFF 		bl	MasterReg_Write
+ 502              	.LVL45:
+ 134:main.c        ****         CyDelay(100);
+ 503              		.loc 1 134 0 discriminator 3
+ 504 008a 6420     		movs	r0, #100
+ 505 008c FFF7FEFF 		bl	CyDelay
+ 506              	.LVL46:
+ 135:main.c        ****        MasterReg_Write(4);
+ 507              		.loc 1 135 0 discriminator 3
+ 508 0090 0420     		movs	r0, #4
+ 509 0092 FFF7FEFF 		bl	MasterReg_Write
+ 510              	.LVL47:
+ 136:main.c        ****         CyDelay(100);
+ 511              		.loc 1 136 0 discriminator 3
+ 512 0096 6420     		movs	r0, #100
+ 513 0098 FFF7FEFF 		bl	CyDelay
+ 514              	.LVL48:
+ 137:main.c        ****        MasterReg_Write(8);
+ 515              		.loc 1 137 0 discriminator 3
+ 516 009c 0820     		movs	r0, #8
+ 517 009e FFF7FEFF 		bl	MasterReg_Write
+ 518              	.LVL49:
+ 138:main.c        ****         CyDelay(100);
+ 519              		.loc 1 138 0 discriminator 3
+ 520 00a2 6420     		movs	r0, #100
+ 521 00a4 FFF7FEFF 		bl	CyDelay
+ 522              	.LVL50:
+ 130:main.c        ****             MasterReg_Write(1);
+ 523              		.loc 1 130 0 discriminator 3
+ 524 00a8 0134     		adds	r4, r4, #1
+ 525              	.LVL51:
+ 526 00aa 00E0     		b	.L37
+ 527              	.LVL52:
+ 528              	.L42:
+ 529              	.LBE4:
+ 530 00ac 0024     		movs	r4, #0
+ 531              	.L37:
+ 532              	.LVL53:
+ 533              	.LBB5:
+ 130:main.c        ****             MasterReg_Write(1);
+ 534              		.loc 1 130 0 is_stmt 0 discriminator 1
+ 535 00ae 092C     		cmp	r4, #9
+ 536 00b0 E2DD     		ble	.L39
+ 537              	.LBE5:
+ 139:main.c        ****             }
+ 140:main.c        ****         set_init();
+ 538              		.loc 1 140 0 is_stmt 1
+ 539 00b2 FFF7FEFF 		bl	set_init
+ 540              	.LVL54:
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 13
+
+
+ 141:main.c        ****         MasterReg_Write(0);
+ 541              		.loc 1 141 0
+ 542 00b6 0020     		movs	r0, #0
+ 543 00b8 FFF7FEFF 		bl	MasterReg_Write
+ 544              	.LVL55:
+ 545 00bc B1E7     		b	.L38
+ 546              	.L44:
+ 547 00be C046     		.align	2
+ 548              	.L43:
+ 549 00c0 00000000 		.word	.LANCHOR0
+ 550              		.cfi_endproc
+ 551              	.LFE41:
+ 552              		.size	main, .-main
+ 553              		.global	speed
+ 554              		.global	mVolts
+ 555              		.global	counts
+ 556              		.global	ezI2cBuffer
+ 557              		.data
+ 558              		.align	2
+ 559              		.set	.LANCHOR0,. + 0
+ 560              		.type	ezI2cBuffer, %object
+ 561              		.size	ezI2cBuffer, 3
+ 562              	ezI2cBuffer:
+ 563 0000 40       		.byte	64
+ 564 0001 00       		.byte	0
+ 565 0002 01       		.byte	1
+ 566              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 567              		.align	2
+ 568              	.LC8:
+ 569 0000 534C4F57 		.ascii	"SLOW\000"
+ 569      00
+ 570 0005 000000   		.space	3
+ 571              	.LC10:
+ 572 0008 4D454400 		.ascii	"MED\000"
+ 573              	.LC12:
+ 574 000c 46415354 		.ascii	"FAST\000"
+ 574      00
+ 575 0011 000000   		.space	3
+ 576              	.LC14:
+ 577 0014 20202020 		.ascii	"    \000"
+ 577      00
+ 578              		.bss
+ 579              		.align	1
+ 580              		.set	.LANCHOR1,. + 0
+ 581              		.type	counts, %object
+ 582              		.size	counts, 2
+ 583              	counts:
+ 584 0000 0000     		.space	2
+ 585              		.type	mVolts, %object
+ 586              		.size	mVolts, 2
+ 587              	mVolts:
+ 588 0002 0000     		.space	2
+ 589              		.type	speed, %object
+ 590              		.size	speed, 1
+ 591              	speed:
+ 592 0004 00       		.space	1
+ 593              		.text
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 14
+
+
+ 594              	.Letext0:
+ 595              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 596              		.file 3 "Generated_Source\\PSoC4/ADC.h"
+ 597              		.file 4 "Generated_Source\\PSoC4/LCD.h"
+ 598              		.file 5 "Generated_Source\\PSoC4/But1.h"
+ 599              		.file 6 "Generated_Source\\PSoC4/But2.h"
+ 600              		.file 7 "Generated_Source\\PSoC4/But3.h"
+ 601              		.file 8 "Generated_Source\\PSoC4/But4.h"
+ 602              		.file 9 "Generated_Source\\PSoC4/MasterReg.h"
+ 603              		.file 10 "Generated_Source\\PSoC4/CyLib.h"
+ 604              		.file 11 "Generated_Source\\PSoC4/EZI2C_EZI2C.h"
+ 605              		.file 12 "Generated_Source\\PSoC4/EZI2C.h"
+ 606              		.section	.debug_info,"",%progbits
+ 607              	.Ldebug_info0:
+ 608 0000 38050000 		.4byte	0x538
+ 609 0004 0400     		.2byte	0x4
+ 610 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 611 000a 04       		.byte	0x4
+ 612 000b 01       		.uleb128 0x1
+ 613 000c E3010000 		.4byte	.LASF47
+ 614 0010 0C       		.byte	0xc
+ 615 0011 92020000 		.4byte	.LASF48
+ 616 0015 05010000 		.4byte	.LASF49
+ 617 0019 30000000 		.4byte	.Ldebug_ranges0+0x30
+ 618 001d 00000000 		.4byte	0
+ 619 0021 00000000 		.4byte	.Ldebug_line0
+ 620 0025 02       		.uleb128 0x2
+ 621 0026 01       		.byte	0x1
+ 622 0027 06       		.byte	0x6
+ 623 0028 DB020000 		.4byte	.LASF0
+ 624 002c 02       		.uleb128 0x2
+ 625 002d 01       		.byte	0x1
+ 626 002e 08       		.byte	0x8
+ 627 002f 98000000 		.4byte	.LASF1
+ 628 0033 02       		.uleb128 0x2
+ 629 0034 02       		.byte	0x2
+ 630 0035 05       		.byte	0x5
+ 631 0036 9E020000 		.4byte	.LASF2
+ 632 003a 02       		.uleb128 0x2
+ 633 003b 02       		.byte	0x2
+ 634 003c 07       		.byte	0x7
+ 635 003d 33000000 		.4byte	.LASF3
+ 636 0041 02       		.uleb128 0x2
+ 637 0042 04       		.byte	0x4
+ 638 0043 05       		.byte	0x5
+ 639 0044 C6020000 		.4byte	.LASF4
+ 640 0048 02       		.uleb128 0x2
+ 641 0049 04       		.byte	0x4
+ 642 004a 07       		.byte	0x7
+ 643 004b B6000000 		.4byte	.LASF5
+ 644 004f 02       		.uleb128 0x2
+ 645 0050 08       		.byte	0x8
+ 646 0051 05       		.byte	0x5
+ 647 0052 00000000 		.4byte	.LASF6
+ 648 0056 02       		.uleb128 0x2
+ 649 0057 08       		.byte	0x8
+ 650 0058 07       		.byte	0x7
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 15
+
+
+ 651 0059 97010000 		.4byte	.LASF7
+ 652 005d 03       		.uleb128 0x3
+ 653 005e 04       		.byte	0x4
+ 654 005f 05       		.byte	0x5
+ 655 0060 696E7400 		.ascii	"int\000"
+ 656 0064 02       		.uleb128 0x2
+ 657 0065 04       		.byte	0x4
+ 658 0066 07       		.byte	0x7
+ 659 0067 83010000 		.4byte	.LASF8
+ 660 006b 04       		.uleb128 0x4
+ 661 006c C8000000 		.4byte	.LASF9
+ 662 0070 02       		.byte	0x2
+ 663 0071 FB01     		.2byte	0x1fb
+ 664 0073 2C000000 		.4byte	0x2c
+ 665 0077 04       		.uleb128 0x4
+ 666 0078 72010000 		.4byte	.LASF10
+ 667 007c 02       		.byte	0x2
+ 668 007d FD01     		.2byte	0x1fd
+ 669 007f 48000000 		.4byte	0x48
+ 670 0083 04       		.uleb128 0x4
+ 671 0084 B0000000 		.4byte	.LASF11
+ 672 0088 02       		.byte	0x2
+ 673 0089 FF01     		.2byte	0x1ff
+ 674 008b 33000000 		.4byte	0x33
+ 675 008f 02       		.uleb128 0x2
+ 676 0090 04       		.byte	0x4
+ 677 0091 04       		.byte	0x4
+ 678 0092 88000000 		.4byte	.LASF12
+ 679 0096 02       		.uleb128 0x2
+ 680 0097 08       		.byte	0x8
+ 681 0098 04       		.byte	0x4
+ 682 0099 47010000 		.4byte	.LASF13
+ 683 009d 02       		.uleb128 0x2
+ 684 009e 01       		.byte	0x1
+ 685 009f 08       		.byte	0x8
+ 686 00a0 99020000 		.4byte	.LASF14
+ 687 00a4 02       		.uleb128 0x2
+ 688 00a5 08       		.byte	0x8
+ 689 00a6 04       		.byte	0x4
+ 690 00a7 CF020000 		.4byte	.LASF15
+ 691 00ab 02       		.uleb128 0x2
+ 692 00ac 04       		.byte	0x4
+ 693 00ad 07       		.byte	0x7
+ 694 00ae 78020000 		.4byte	.LASF16
+ 695 00b2 05       		.uleb128 0x5
+ 696 00b3 A6000000 		.4byte	.LASF17
+ 697 00b7 01       		.byte	0x1
+ 698 00b8 15       		.byte	0x15
+ 699 00b9 00000000 		.4byte	.LFB32
+ 700 00bd 0C000000 		.4byte	.LFE32-.LFB32
+ 701 00c1 01       		.uleb128 0x1
+ 702 00c2 9C       		.byte	0x9c
+ 703 00c3 D3000000 		.4byte	0xd3
+ 704 00c7 06       		.uleb128 0x6
+ 705 00c8 7800     		.ascii	"x\000"
+ 706 00ca 01       		.byte	0x1
+ 707 00cb 15       		.byte	0x15
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 16
+
+
+ 708 00cc 6B000000 		.4byte	0x6b
+ 709 00d0 01       		.uleb128 0x1
+ 710 00d1 50       		.byte	0x50
+ 711 00d2 00       		.byte	0
+ 712 00d3 05       		.uleb128 0x5
+ 713 00d4 BB020000 		.4byte	.LASF18
+ 714 00d8 01       		.byte	0x1
+ 715 00d9 19       		.byte	0x19
+ 716 00da 00000000 		.4byte	.LFB33
+ 717 00de 0C000000 		.4byte	.LFE33-.LFB33
+ 718 00e2 01       		.uleb128 0x1
+ 719 00e3 9C       		.byte	0x9c
+ 720 00e4 F4000000 		.4byte	0xf4
+ 721 00e8 06       		.uleb128 0x6
+ 722 00e9 7800     		.ascii	"x\000"
+ 723 00eb 01       		.byte	0x1
+ 724 00ec 19       		.byte	0x19
+ 725 00ed 6B000000 		.4byte	0x6b
+ 726 00f1 01       		.uleb128 0x1
+ 727 00f2 50       		.byte	0x50
+ 728 00f3 00       		.byte	0
+ 729 00f4 07       		.uleb128 0x7
+ 730 00f5 63010000 		.4byte	.LASF19
+ 731 00f9 01       		.byte	0x1
+ 732 00fa 1D       		.byte	0x1d
+ 733 00fb 6B000000 		.4byte	0x6b
+ 734 00ff 00000000 		.4byte	.LFB34
+ 735 0103 10000000 		.4byte	.LFE34-.LFB34
+ 736 0107 01       		.uleb128 0x1
+ 737 0108 9C       		.byte	0x9c
+ 738 0109 07       		.uleb128 0x7
+ 739 010a 46000000 		.4byte	.LASF20
+ 740 010e 01       		.byte	0x1
+ 741 010f 23       		.byte	0x23
+ 742 0110 6B000000 		.4byte	0x6b
+ 743 0114 00000000 		.4byte	.LFB35
+ 744 0118 10000000 		.4byte	.LFE35-.LFB35
+ 745 011c 01       		.uleb128 0x1
+ 746 011d 9C       		.byte	0x9c
+ 747 011e 07       		.uleb128 0x7
+ 748 011f F5000000 		.4byte	.LASF21
+ 749 0123 01       		.byte	0x1
+ 750 0124 27       		.byte	0x27
+ 751 0125 6B000000 		.4byte	0x6b
+ 752 0129 00000000 		.4byte	.LFB36
+ 753 012d 10000000 		.4byte	.LFE36-.LFB36
+ 754 0131 01       		.uleb128 0x1
+ 755 0132 9C       		.byte	0x9c
+ 756 0133 08       		.uleb128 0x8
+ 757 0134 F4020000 		.4byte	.LASF22
+ 758 0138 01       		.byte	0x1
+ 759 0139 2B       		.byte	0x2b
+ 760 013a 00000000 		.4byte	.LFB37
+ 761 013e 10000000 		.4byte	.LFE37-.LFB37
+ 762 0142 01       		.uleb128 0x1
+ 763 0143 9C       		.byte	0x9c
+ 764 0144 08       		.uleb128 0x8
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 17
+
+
+ 765 0145 7F000000 		.4byte	.LASF23
+ 766 0149 01       		.byte	0x1
+ 767 014a 2F       		.byte	0x2f
+ 768 014b 00000000 		.4byte	.LFB38
+ 769 014f 0C000000 		.4byte	.LFE38-.LFB38
+ 770 0153 01       		.uleb128 0x1
+ 771 0154 9C       		.byte	0x9c
+ 772 0155 09       		.uleb128 0x9
+ 773 0156 A8020000 		.4byte	.LASF24
+ 774 015a 01       		.byte	0x1
+ 775 015b 38       		.byte	0x38
+ 776 015c 5D000000 		.4byte	0x5d
+ 777 0160 00000000 		.4byte	.LFB39
+ 778 0164 88000000 		.4byte	.LFE39-.LFB39
+ 779 0168 01       		.uleb128 0x1
+ 780 0169 9C       		.byte	0x9c
+ 781 016a 05020000 		.4byte	0x205
+ 782 016e 0A       		.uleb128 0xa
+ 783 016f 08000000 		.4byte	.LVL2
+ 784 0173 8B040000 		.4byte	0x48b
+ 785 0177 81010000 		.4byte	0x181
+ 786 017b 0B       		.uleb128 0xb
+ 787 017c 01       		.uleb128 0x1
+ 788 017d 50       		.byte	0x50
+ 789 017e 01       		.uleb128 0x1
+ 790 017f 30       		.byte	0x30
+ 791 0180 00       		.byte	0
+ 792 0181 0A       		.uleb128 0xa
+ 793 0182 14000000 		.4byte	.LVL3
+ 794 0186 96040000 		.4byte	0x496
+ 795 018a 94010000 		.4byte	0x194
+ 796 018e 0B       		.uleb128 0xb
+ 797 018f 01       		.uleb128 0x1
+ 798 0190 50       		.byte	0x50
+ 799 0191 01       		.uleb128 0x1
+ 800 0192 30       		.byte	0x30
+ 801 0193 00       		.byte	0
+ 802 0194 0A       		.uleb128 0xa
+ 803 0195 42000000 		.4byte	.LVL4
+ 804 0199 A1040000 		.4byte	0x4a1
+ 805 019d AC010000 		.4byte	0x1ac
+ 806 01a1 0B       		.uleb128 0xb
+ 807 01a2 01       		.uleb128 0x1
+ 808 01a3 50       		.byte	0x50
+ 809 01a4 01       		.uleb128 0x1
+ 810 01a5 30       		.byte	0x30
+ 811 01a6 0B       		.uleb128 0xb
+ 812 01a7 01       		.uleb128 0x1
+ 813 01a8 51       		.byte	0x51
+ 814 01a9 01       		.uleb128 0x1
+ 815 01aa 30       		.byte	0x30
+ 816 01ab 00       		.byte	0
+ 817 01ac 0A       		.uleb128 0xa
+ 818 01ad 50000000 		.4byte	.LVL5
+ 819 01b1 AC040000 		.4byte	0x4ac
+ 820 01b5 C3010000 		.4byte	0x1c3
+ 821 01b9 0B       		.uleb128 0xb
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 18
+
+
+ 822 01ba 01       		.uleb128 0x1
+ 823 01bb 50       		.byte	0x50
+ 824 01bc 05       		.uleb128 0x5
+ 825 01bd 03       		.byte	0x3
+ 826 01be 00000000 		.4byte	.LC8
+ 827 01c2 00       		.byte	0
+ 828 01c3 0A       		.uleb128 0xa
+ 829 01c4 5C000000 		.4byte	.LVL6
+ 830 01c8 AC040000 		.4byte	0x4ac
+ 831 01cc DA010000 		.4byte	0x1da
+ 832 01d0 0B       		.uleb128 0xb
+ 833 01d1 01       		.uleb128 0x1
+ 834 01d2 50       		.byte	0x50
+ 835 01d3 05       		.uleb128 0x5
+ 836 01d4 03       		.byte	0x3
+ 837 01d5 08000000 		.4byte	.LC10
+ 838 01d9 00       		.byte	0
+ 839 01da 0A       		.uleb128 0xa
+ 840 01db 64000000 		.4byte	.LVL7
+ 841 01df AC040000 		.4byte	0x4ac
+ 842 01e3 F1010000 		.4byte	0x1f1
+ 843 01e7 0B       		.uleb128 0xb
+ 844 01e8 01       		.uleb128 0x1
+ 845 01e9 50       		.byte	0x50
+ 846 01ea 05       		.uleb128 0x5
+ 847 01eb 03       		.byte	0x3
+ 848 01ec 0C000000 		.4byte	.LC12
+ 849 01f0 00       		.byte	0
+ 850 01f1 0C       		.uleb128 0xc
+ 851 01f2 6A000000 		.4byte	.LVL8
+ 852 01f6 AC040000 		.4byte	0x4ac
+ 853 01fa 0B       		.uleb128 0xb
+ 854 01fb 01       		.uleb128 0x1
+ 855 01fc 50       		.byte	0x50
+ 856 01fd 05       		.uleb128 0x5
+ 857 01fe 03       		.byte	0x3
+ 858 01ff 14000000 		.4byte	.LC14
+ 859 0203 00       		.byte	0
+ 860 0204 00       		.byte	0
+ 861 0205 0D       		.uleb128 0xd
+ 862 0206 CE000000 		.4byte	.LASF50
+ 863 020a 01       		.byte	0x1
+ 864 020b 4E       		.byte	0x4e
+ 865 020c 6B000000 		.4byte	0x6b
+ 866 0210 00000000 		.4byte	.LFB40
+ 867 0214 2C000000 		.4byte	.LFE40-.LFB40
+ 868 0218 01       		.uleb128 0x1
+ 869 0219 9C       		.byte	0x9c
+ 870 021a 52020000 		.4byte	0x252
+ 871 021e 0E       		.uleb128 0xe
+ 872 021f D8010000 		.4byte	.LASF25
+ 873 0223 01       		.byte	0x1
+ 874 0224 50       		.byte	0x50
+ 875 0225 6B000000 		.4byte	0x6b
+ 876 0229 00000000 		.4byte	.LLST0
+ 877 022d 0F       		.uleb128 0xf
+ 878 022e 06000000 		.4byte	.LVL10
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 19
+
+
+ 879 0232 B7040000 		.4byte	0x4b7
+ 880 0236 0F       		.uleb128 0xf
+ 881 0237 0C000000 		.4byte	.LVL12
+ 882 023b C2040000 		.4byte	0x4c2
+ 883 023f 0F       		.uleb128 0xf
+ 884 0240 16000000 		.4byte	.LVL15
+ 885 0244 CD040000 		.4byte	0x4cd
+ 886 0248 0F       		.uleb128 0xf
+ 887 0249 20000000 		.4byte	.LVL17
+ 888 024d D8040000 		.4byte	0x4d8
+ 889 0251 00       		.byte	0
+ 890 0252 10       		.uleb128 0x10
+ 891 0253 4E010000 		.4byte	.LASF51
+ 892 0257 01       		.byte	0x1
+ 893 0258 60       		.byte	0x60
+ 894 0259 5D000000 		.4byte	0x5d
+ 895 025d 00000000 		.4byte	.LFB41
+ 896 0261 C4000000 		.4byte	.LFE41-.LFB41
+ 897 0265 01       		.uleb128 0x1
+ 898 0266 9C       		.byte	0x9c
+ 899 0267 37040000 		.4byte	0x437
+ 900 026b 0E       		.uleb128 0xe
+ 901 026c 28000000 		.4byte	.LASF26
+ 902 0270 01       		.byte	0x1
+ 903 0271 62       		.byte	0x62
+ 904 0272 6B000000 		.4byte	0x6b
+ 905 0276 35000000 		.4byte	.LLST1
+ 906 027a 11       		.uleb128 0x11
+ 907 027b 00000000 		.4byte	.Ldebug_ranges0+0
+ 908 027f B4020000 		.4byte	0x2b4
+ 909 0283 12       		.uleb128 0x12
+ 910 0284 6900     		.ascii	"i\000"
+ 911 0286 01       		.byte	0x1
+ 912 0287 7A       		.byte	0x7a
+ 913 0288 5D000000 		.4byte	0x5d
+ 914 028c 48000000 		.4byte	.LLST2
+ 915 0290 0A       		.uleb128 0xa
+ 916 0291 54000000 		.4byte	.LVL34
+ 917 0295 E3040000 		.4byte	0x4e3
+ 918 0299 A3020000 		.4byte	0x2a3
+ 919 029d 0B       		.uleb128 0xb
+ 920 029e 01       		.uleb128 0x1
+ 921 029f 50       		.byte	0x50
+ 922 02a0 01       		.uleb128 0x1
+ 923 02a1 31       		.byte	0x31
+ 924 02a2 00       		.byte	0
+ 925 02a3 0C       		.uleb128 0xc
+ 926 02a4 5A000000 		.4byte	.LVL35
+ 927 02a8 EE040000 		.4byte	0x4ee
+ 928 02ac 0B       		.uleb128 0xb
+ 929 02ad 01       		.uleb128 0x1
+ 930 02ae 50       		.byte	0x50
+ 931 02af 02       		.uleb128 0x2
+ 932 02b0 08       		.byte	0x8
+ 933 02b1 64       		.byte	0x64
+ 934 02b2 00       		.byte	0
+ 935 02b3 00       		.byte	0
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 20
+
+
+ 936 02b4 11       		.uleb128 0x11
+ 937 02b5 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 938 02b9 63030000 		.4byte	0x363
+ 939 02bd 12       		.uleb128 0x12
+ 940 02be 6900     		.ascii	"i\000"
+ 941 02c0 01       		.byte	0x1
+ 942 02c1 82       		.byte	0x82
+ 943 02c2 5D000000 		.4byte	0x5d
+ 944 02c6 66000000 		.4byte	.LLST3
+ 945 02ca 0A       		.uleb128 0xa
+ 946 02cb 7E000000 		.4byte	.LVL43
+ 947 02cf E3040000 		.4byte	0x4e3
+ 948 02d3 DD020000 		.4byte	0x2dd
+ 949 02d7 0B       		.uleb128 0xb
+ 950 02d8 01       		.uleb128 0x1
+ 951 02d9 50       		.byte	0x50
+ 952 02da 01       		.uleb128 0x1
+ 953 02db 31       		.byte	0x31
+ 954 02dc 00       		.byte	0
+ 955 02dd 0A       		.uleb128 0xa
+ 956 02de 84000000 		.4byte	.LVL44
+ 957 02e2 EE040000 		.4byte	0x4ee
+ 958 02e6 F1020000 		.4byte	0x2f1
+ 959 02ea 0B       		.uleb128 0xb
+ 960 02eb 01       		.uleb128 0x1
+ 961 02ec 50       		.byte	0x50
+ 962 02ed 02       		.uleb128 0x2
+ 963 02ee 08       		.byte	0x8
+ 964 02ef 64       		.byte	0x64
+ 965 02f0 00       		.byte	0
+ 966 02f1 0A       		.uleb128 0xa
+ 967 02f2 8A000000 		.4byte	.LVL45
+ 968 02f6 E3040000 		.4byte	0x4e3
+ 969 02fa 04030000 		.4byte	0x304
+ 970 02fe 0B       		.uleb128 0xb
+ 971 02ff 01       		.uleb128 0x1
+ 972 0300 50       		.byte	0x50
+ 973 0301 01       		.uleb128 0x1
+ 974 0302 32       		.byte	0x32
+ 975 0303 00       		.byte	0
+ 976 0304 0A       		.uleb128 0xa
+ 977 0305 90000000 		.4byte	.LVL46
+ 978 0309 EE040000 		.4byte	0x4ee
+ 979 030d 18030000 		.4byte	0x318
+ 980 0311 0B       		.uleb128 0xb
+ 981 0312 01       		.uleb128 0x1
+ 982 0313 50       		.byte	0x50
+ 983 0314 02       		.uleb128 0x2
+ 984 0315 08       		.byte	0x8
+ 985 0316 64       		.byte	0x64
+ 986 0317 00       		.byte	0
+ 987 0318 0A       		.uleb128 0xa
+ 988 0319 96000000 		.4byte	.LVL47
+ 989 031d E3040000 		.4byte	0x4e3
+ 990 0321 2B030000 		.4byte	0x32b
+ 991 0325 0B       		.uleb128 0xb
+ 992 0326 01       		.uleb128 0x1
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 21
+
+
+ 993 0327 50       		.byte	0x50
+ 994 0328 01       		.uleb128 0x1
+ 995 0329 34       		.byte	0x34
+ 996 032a 00       		.byte	0
+ 997 032b 0A       		.uleb128 0xa
+ 998 032c 9C000000 		.4byte	.LVL48
+ 999 0330 EE040000 		.4byte	0x4ee
+ 1000 0334 3F030000 		.4byte	0x33f
+ 1001 0338 0B       		.uleb128 0xb
+ 1002 0339 01       		.uleb128 0x1
+ 1003 033a 50       		.byte	0x50
+ 1004 033b 02       		.uleb128 0x2
+ 1005 033c 08       		.byte	0x8
+ 1006 033d 64       		.byte	0x64
+ 1007 033e 00       		.byte	0
+ 1008 033f 0A       		.uleb128 0xa
+ 1009 0340 A2000000 		.4byte	.LVL49
+ 1010 0344 E3040000 		.4byte	0x4e3
+ 1011 0348 52030000 		.4byte	0x352
+ 1012 034c 0B       		.uleb128 0xb
+ 1013 034d 01       		.uleb128 0x1
+ 1014 034e 50       		.byte	0x50
+ 1015 034f 01       		.uleb128 0x1
+ 1016 0350 38       		.byte	0x38
+ 1017 0351 00       		.byte	0
+ 1018 0352 0C       		.uleb128 0xc
+ 1019 0353 A8000000 		.4byte	.LVL50
+ 1020 0357 EE040000 		.4byte	0x4ee
+ 1021 035b 0B       		.uleb128 0xb
+ 1022 035c 01       		.uleb128 0x1
+ 1023 035d 50       		.byte	0x50
+ 1024 035e 02       		.uleb128 0x2
+ 1025 035f 08       		.byte	0x8
+ 1026 0360 64       		.byte	0x64
+ 1027 0361 00       		.byte	0
+ 1028 0362 00       		.byte	0
+ 1029 0363 0A       		.uleb128 0xa
+ 1030 0364 0E000000 		.4byte	.LVL19
+ 1031 0368 F9040000 		.4byte	0x4f9
+ 1032 036c 84030000 		.4byte	0x384
+ 1033 0370 0B       		.uleb128 0xb
+ 1034 0371 01       		.uleb128 0x1
+ 1035 0372 50       		.byte	0x50
+ 1036 0373 01       		.uleb128 0x1
+ 1037 0374 33       		.byte	0x33
+ 1038 0375 0B       		.uleb128 0xb
+ 1039 0376 01       		.uleb128 0x1
+ 1040 0377 51       		.byte	0x51
+ 1041 0378 01       		.uleb128 0x1
+ 1042 0379 33       		.byte	0x33
+ 1043 037a 0B       		.uleb128 0xb
+ 1044 037b 01       		.uleb128 0x1
+ 1045 037c 52       		.byte	0x52
+ 1046 037d 05       		.uleb128 0x5
+ 1047 037e 03       		.byte	0x3
+ 1048 037f 00000000 		.4byte	.LANCHOR0
+ 1049 0383 00       		.byte	0
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 22
+
+
+ 1050 0384 0F       		.uleb128 0xf
+ 1051 0385 12000000 		.4byte	.LVL20
+ 1052 0389 04050000 		.4byte	0x504
+ 1053 038d 0F       		.uleb128 0xf
+ 1054 038e 16000000 		.4byte	.LVL21
+ 1055 0392 0F050000 		.4byte	0x50f
+ 1056 0396 0F       		.uleb128 0xf
+ 1057 0397 1A000000 		.4byte	.LVL22
+ 1058 039b 1A050000 		.4byte	0x51a
+ 1059 039f 0F       		.uleb128 0xf
+ 1060 03a0 1E000000 		.4byte	.LVL23
+ 1061 03a4 25050000 		.4byte	0x525
+ 1062 03a8 0F       		.uleb128 0xf
+ 1063 03a9 22000000 		.4byte	.LVL24
+ 1064 03ad 33010000 		.4byte	0x133
+ 1065 03b1 0F       		.uleb128 0xf
+ 1066 03b2 26000000 		.4byte	.LVL25
+ 1067 03b6 55010000 		.4byte	0x155
+ 1068 03ba 0F       		.uleb128 0xf
+ 1069 03bb 2C000000 		.4byte	.LVL26
+ 1070 03bf B2000000 		.4byte	0xb2
+ 1071 03c3 0F       		.uleb128 0xf
+ 1072 03c4 30000000 		.4byte	.LVL27
+ 1073 03c8 05020000 		.4byte	0x205
+ 1074 03cc 0F       		.uleb128 0xf
+ 1075 03cd 34000000 		.4byte	.LVL28
+ 1076 03d1 D3000000 		.4byte	0xd3
+ 1077 03d5 0F       		.uleb128 0xf
+ 1078 03d6 38000000 		.4byte	.LVL29
+ 1079 03da 30050000 		.4byte	0x530
+ 1080 03de 0F       		.uleb128 0xf
+ 1081 03df 40000000 		.4byte	.LVL30
+ 1082 03e3 F4000000 		.4byte	0xf4
+ 1083 03e7 0F       		.uleb128 0xf
+ 1084 03e8 44000000 		.4byte	.LVL31
+ 1085 03ec E3040000 		.4byte	0x4e3
+ 1086 03f0 0F       		.uleb128 0xf
+ 1087 03f1 48000000 		.4byte	.LVL32
+ 1088 03f5 1E010000 		.4byte	0x11e
+ 1089 03f9 0F       		.uleb128 0xf
+ 1090 03fa 68000000 		.4byte	.LVL39
+ 1091 03fe 44010000 		.4byte	0x144
+ 1092 0402 0A       		.uleb128 0xa
+ 1093 0403 6E000000 		.4byte	.LVL40
+ 1094 0407 E3040000 		.4byte	0x4e3
+ 1095 040b 15040000 		.4byte	0x415
+ 1096 040f 0B       		.uleb128 0xb
+ 1097 0410 01       		.uleb128 0x1
+ 1098 0411 50       		.byte	0x50
+ 1099 0412 01       		.uleb128 0x1
+ 1100 0413 30       		.byte	0x30
+ 1101 0414 00       		.byte	0
+ 1102 0415 0F       		.uleb128 0xf
+ 1103 0416 72000000 		.4byte	.LVL41
+ 1104 041a 09010000 		.4byte	0x109
+ 1105 041e 0F       		.uleb128 0xf
+ 1106 041f B6000000 		.4byte	.LVL54
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 23
+
+
+ 1107 0423 44010000 		.4byte	0x144
+ 1108 0427 0C       		.uleb128 0xc
+ 1109 0428 BC000000 		.4byte	.LVL55
+ 1110 042c E3040000 		.4byte	0x4e3
+ 1111 0430 0B       		.uleb128 0xb
+ 1112 0431 01       		.uleb128 0x1
+ 1113 0432 50       		.byte	0x50
+ 1114 0433 01       		.uleb128 0x1
+ 1115 0434 30       		.byte	0x30
+ 1116 0435 00       		.byte	0
+ 1117 0436 00       		.byte	0
+ 1118 0437 13       		.uleb128 0x13
+ 1119 0438 6B000000 		.4byte	0x6b
+ 1120 043c 47040000 		.4byte	0x447
+ 1121 0440 14       		.uleb128 0x14
+ 1122 0441 AB000000 		.4byte	0xab
+ 1123 0445 02       		.byte	0x2
+ 1124 0446 00       		.byte	0
+ 1125 0447 15       		.uleb128 0x15
+ 1126 0448 E9000000 		.4byte	.LASF27
+ 1127 044c 01       		.byte	0x1
+ 1128 044d 12       		.byte	0x12
+ 1129 044e 37040000 		.4byte	0x437
+ 1130 0452 05       		.uleb128 0x5
+ 1131 0453 03       		.byte	0x3
+ 1132 0454 00000000 		.4byte	ezI2cBuffer
+ 1133 0458 15       		.uleb128 0x15
+ 1134 0459 90010000 		.4byte	.LASF28
+ 1135 045d 01       		.byte	0x1
+ 1136 045e 34       		.byte	0x34
+ 1137 045f 83000000 		.4byte	0x83
+ 1138 0463 05       		.uleb128 0x5
+ 1139 0464 03       		.byte	0x3
+ 1140 0465 00000000 		.4byte	counts
+ 1141 0469 15       		.uleb128 0x15
+ 1142 046a 71020000 		.4byte	.LASF29
+ 1143 046e 01       		.byte	0x1
+ 1144 046f 35       		.byte	0x35
+ 1145 0470 83000000 		.4byte	0x83
+ 1146 0474 05       		.uleb128 0x5
+ 1147 0475 03       		.byte	0x3
+ 1148 0476 00000000 		.4byte	mVolts
+ 1149 047a 15       		.uleb128 0x15
+ 1150 047b 0E000000 		.4byte	.LASF30
+ 1151 047f 01       		.byte	0x1
+ 1152 0480 36       		.byte	0x36
+ 1153 0481 6B000000 		.4byte	0x6b
+ 1154 0485 05       		.uleb128 0x5
+ 1155 0486 03       		.byte	0x3
+ 1156 0487 00000000 		.4byte	speed
+ 1157 048b 16       		.uleb128 0x16
+ 1158 048c D9000000 		.4byte	.LASF31
+ 1159 0490 D9000000 		.4byte	.LASF31
+ 1160 0494 03       		.byte	0x3
+ 1161 0495 A0       		.byte	0xa0
+ 1162 0496 16       		.uleb128 0x16
+ 1163 0497 14000000 		.4byte	.LASF32
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 24
+
+
+ 1164 049b 14000000 		.4byte	.LASF32
+ 1165 049f 03       		.byte	0x3
+ 1166 04a0 AC       		.byte	0xac
+ 1167 04a1 16       		.uleb128 0x16
+ 1168 04a2 E7020000 		.4byte	.LASF33
+ 1169 04a6 E7020000 		.4byte	.LASF33
+ 1170 04aa 04       		.byte	0x4
+ 1171 04ab 3D       		.byte	0x3d
+ 1172 04ac 16       		.uleb128 0x16
+ 1173 04ad 53010000 		.4byte	.LASF34
+ 1174 04b1 53010000 		.4byte	.LASF34
+ 1175 04b5 04       		.byte	0x4
+ 1176 04b6 3C       		.byte	0x3c
+ 1177 04b7 16       		.uleb128 0x16
+ 1178 04b8 C4010000 		.4byte	.LASF35
+ 1179 04bc C4010000 		.4byte	.LASF35
+ 1180 04c0 05       		.byte	0x5
+ 1181 04c1 32       		.byte	0x32
+ 1182 04c2 16       		.uleb128 0x16
+ 1183 04c3 FE020000 		.4byte	.LASF36
+ 1184 04c7 FE020000 		.4byte	.LASF36
+ 1185 04cb 06       		.byte	0x6
+ 1186 04cc 32       		.byte	0x32
+ 1187 04cd 16       		.uleb128 0x16
+ 1188 04ce 6D000000 		.4byte	.LASF37
+ 1189 04d2 6D000000 		.4byte	.LASF37
+ 1190 04d6 07       		.byte	0x7
+ 1191 04d7 32       		.byte	0x32
+ 1192 04d8 16       		.uleb128 0x16
+ 1193 04d9 79010000 		.4byte	.LASF38
+ 1194 04dd 79010000 		.4byte	.LASF38
+ 1195 04e1 08       		.byte	0x8
+ 1196 04e2 32       		.byte	0x32
+ 1197 04e3 16       		.uleb128 0x16
+ 1198 04e4 08030000 		.4byte	.LASF39
+ 1199 04e8 08030000 		.4byte	.LASF39
+ 1200 04ec 09       		.byte	0x9
+ 1201 04ed 2F       		.byte	0x2f
+ 1202 04ee 16       		.uleb128 0x16
+ 1203 04ef 77000000 		.4byte	.LASF40
+ 1204 04f3 77000000 		.4byte	.LASF40
+ 1205 04f7 0A       		.byte	0xa
+ 1206 04f8 EC       		.byte	0xec
+ 1207 04f9 16       		.uleb128 0x16
+ 1208 04fa AE010000 		.4byte	.LASF41
+ 1209 04fe AE010000 		.4byte	.LASF41
+ 1210 0502 0B       		.byte	0xb
+ 1211 0503 A2       		.byte	0xa2
+ 1212 0504 16       		.uleb128 0x16
+ 1213 0505 AF020000 		.4byte	.LASF42
+ 1214 0509 AF020000 		.4byte	.LASF42
+ 1215 050d 0C       		.byte	0xc
+ 1216 050e 72       		.byte	0x72
+ 1217 050f 16       		.uleb128 0x16
+ 1218 0510 CE010000 		.4byte	.LASF43
+ 1219 0514 CE010000 		.4byte	.LASF43
+ 1220 0518 03       		.byte	0x3
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 25
+
+
+ 1221 0519 99       		.byte	0x99
+ 1222 051a 16       		.uleb128 0x16
+ 1223 051b 81020000 		.4byte	.LASF44
+ 1224 051f 81020000 		.4byte	.LASF44
+ 1225 0523 03       		.byte	0x3
+ 1226 0524 9D       		.byte	0x9d
+ 1227 0525 16       		.uleb128 0x16
+ 1228 0526 8E000000 		.4byte	.LASF45
+ 1229 052a 8E000000 		.4byte	.LASF45
+ 1230 052e 04       		.byte	0x4
+ 1231 052f 38       		.byte	0x38
+ 1232 0530 16       		.uleb128 0x16
+ 1233 0531 56000000 		.4byte	.LASF46
+ 1234 0535 56000000 		.4byte	.LASF46
+ 1235 0539 0B       		.byte	0xb
+ 1236 053a 9E       		.byte	0x9e
+ 1237 053b 00       		.byte	0
+ 1238              		.section	.debug_abbrev,"",%progbits
+ 1239              	.Ldebug_abbrev0:
+ 1240 0000 01       		.uleb128 0x1
+ 1241 0001 11       		.uleb128 0x11
+ 1242 0002 01       		.byte	0x1
+ 1243 0003 25       		.uleb128 0x25
+ 1244 0004 0E       		.uleb128 0xe
+ 1245 0005 13       		.uleb128 0x13
+ 1246 0006 0B       		.uleb128 0xb
+ 1247 0007 03       		.uleb128 0x3
+ 1248 0008 0E       		.uleb128 0xe
+ 1249 0009 1B       		.uleb128 0x1b
+ 1250 000a 0E       		.uleb128 0xe
+ 1251 000b 55       		.uleb128 0x55
+ 1252 000c 17       		.uleb128 0x17
+ 1253 000d 11       		.uleb128 0x11
+ 1254 000e 01       		.uleb128 0x1
+ 1255 000f 10       		.uleb128 0x10
+ 1256 0010 17       		.uleb128 0x17
+ 1257 0011 00       		.byte	0
+ 1258 0012 00       		.byte	0
+ 1259 0013 02       		.uleb128 0x2
+ 1260 0014 24       		.uleb128 0x24
+ 1261 0015 00       		.byte	0
+ 1262 0016 0B       		.uleb128 0xb
+ 1263 0017 0B       		.uleb128 0xb
+ 1264 0018 3E       		.uleb128 0x3e
+ 1265 0019 0B       		.uleb128 0xb
+ 1266 001a 03       		.uleb128 0x3
+ 1267 001b 0E       		.uleb128 0xe
+ 1268 001c 00       		.byte	0
+ 1269 001d 00       		.byte	0
+ 1270 001e 03       		.uleb128 0x3
+ 1271 001f 24       		.uleb128 0x24
+ 1272 0020 00       		.byte	0
+ 1273 0021 0B       		.uleb128 0xb
+ 1274 0022 0B       		.uleb128 0xb
+ 1275 0023 3E       		.uleb128 0x3e
+ 1276 0024 0B       		.uleb128 0xb
+ 1277 0025 03       		.uleb128 0x3
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 26
+
+
+ 1278 0026 08       		.uleb128 0x8
+ 1279 0027 00       		.byte	0
+ 1280 0028 00       		.byte	0
+ 1281 0029 04       		.uleb128 0x4
+ 1282 002a 16       		.uleb128 0x16
+ 1283 002b 00       		.byte	0
+ 1284 002c 03       		.uleb128 0x3
+ 1285 002d 0E       		.uleb128 0xe
+ 1286 002e 3A       		.uleb128 0x3a
+ 1287 002f 0B       		.uleb128 0xb
+ 1288 0030 3B       		.uleb128 0x3b
+ 1289 0031 05       		.uleb128 0x5
+ 1290 0032 49       		.uleb128 0x49
+ 1291 0033 13       		.uleb128 0x13
+ 1292 0034 00       		.byte	0
+ 1293 0035 00       		.byte	0
+ 1294 0036 05       		.uleb128 0x5
+ 1295 0037 2E       		.uleb128 0x2e
+ 1296 0038 01       		.byte	0x1
+ 1297 0039 3F       		.uleb128 0x3f
+ 1298 003a 19       		.uleb128 0x19
+ 1299 003b 03       		.uleb128 0x3
+ 1300 003c 0E       		.uleb128 0xe
+ 1301 003d 3A       		.uleb128 0x3a
+ 1302 003e 0B       		.uleb128 0xb
+ 1303 003f 3B       		.uleb128 0x3b
+ 1304 0040 0B       		.uleb128 0xb
+ 1305 0041 27       		.uleb128 0x27
+ 1306 0042 19       		.uleb128 0x19
+ 1307 0043 11       		.uleb128 0x11
+ 1308 0044 01       		.uleb128 0x1
+ 1309 0045 12       		.uleb128 0x12
+ 1310 0046 06       		.uleb128 0x6
+ 1311 0047 40       		.uleb128 0x40
+ 1312 0048 18       		.uleb128 0x18
+ 1313 0049 9742     		.uleb128 0x2117
+ 1314 004b 19       		.uleb128 0x19
+ 1315 004c 01       		.uleb128 0x1
+ 1316 004d 13       		.uleb128 0x13
+ 1317 004e 00       		.byte	0
+ 1318 004f 00       		.byte	0
+ 1319 0050 06       		.uleb128 0x6
+ 1320 0051 05       		.uleb128 0x5
+ 1321 0052 00       		.byte	0
+ 1322 0053 03       		.uleb128 0x3
+ 1323 0054 08       		.uleb128 0x8
+ 1324 0055 3A       		.uleb128 0x3a
+ 1325 0056 0B       		.uleb128 0xb
+ 1326 0057 3B       		.uleb128 0x3b
+ 1327 0058 0B       		.uleb128 0xb
+ 1328 0059 49       		.uleb128 0x49
+ 1329 005a 13       		.uleb128 0x13
+ 1330 005b 02       		.uleb128 0x2
+ 1331 005c 18       		.uleb128 0x18
+ 1332 005d 00       		.byte	0
+ 1333 005e 00       		.byte	0
+ 1334 005f 07       		.uleb128 0x7
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 27
+
+
+ 1335 0060 2E       		.uleb128 0x2e
+ 1336 0061 00       		.byte	0
+ 1337 0062 3F       		.uleb128 0x3f
+ 1338 0063 19       		.uleb128 0x19
+ 1339 0064 03       		.uleb128 0x3
+ 1340 0065 0E       		.uleb128 0xe
+ 1341 0066 3A       		.uleb128 0x3a
+ 1342 0067 0B       		.uleb128 0xb
+ 1343 0068 3B       		.uleb128 0x3b
+ 1344 0069 0B       		.uleb128 0xb
+ 1345 006a 49       		.uleb128 0x49
+ 1346 006b 13       		.uleb128 0x13
+ 1347 006c 11       		.uleb128 0x11
+ 1348 006d 01       		.uleb128 0x1
+ 1349 006e 12       		.uleb128 0x12
+ 1350 006f 06       		.uleb128 0x6
+ 1351 0070 40       		.uleb128 0x40
+ 1352 0071 18       		.uleb128 0x18
+ 1353 0072 9742     		.uleb128 0x2117
+ 1354 0074 19       		.uleb128 0x19
+ 1355 0075 00       		.byte	0
+ 1356 0076 00       		.byte	0
+ 1357 0077 08       		.uleb128 0x8
+ 1358 0078 2E       		.uleb128 0x2e
+ 1359 0079 00       		.byte	0
+ 1360 007a 3F       		.uleb128 0x3f
+ 1361 007b 19       		.uleb128 0x19
+ 1362 007c 03       		.uleb128 0x3
+ 1363 007d 0E       		.uleb128 0xe
+ 1364 007e 3A       		.uleb128 0x3a
+ 1365 007f 0B       		.uleb128 0xb
+ 1366 0080 3B       		.uleb128 0x3b
+ 1367 0081 0B       		.uleb128 0xb
+ 1368 0082 11       		.uleb128 0x11
+ 1369 0083 01       		.uleb128 0x1
+ 1370 0084 12       		.uleb128 0x12
+ 1371 0085 06       		.uleb128 0x6
+ 1372 0086 40       		.uleb128 0x40
+ 1373 0087 18       		.uleb128 0x18
+ 1374 0088 9742     		.uleb128 0x2117
+ 1375 008a 19       		.uleb128 0x19
+ 1376 008b 00       		.byte	0
+ 1377 008c 00       		.byte	0
+ 1378 008d 09       		.uleb128 0x9
+ 1379 008e 2E       		.uleb128 0x2e
+ 1380 008f 01       		.byte	0x1
+ 1381 0090 3F       		.uleb128 0x3f
+ 1382 0091 19       		.uleb128 0x19
+ 1383 0092 03       		.uleb128 0x3
+ 1384 0093 0E       		.uleb128 0xe
+ 1385 0094 3A       		.uleb128 0x3a
+ 1386 0095 0B       		.uleb128 0xb
+ 1387 0096 3B       		.uleb128 0x3b
+ 1388 0097 0B       		.uleb128 0xb
+ 1389 0098 49       		.uleb128 0x49
+ 1390 0099 13       		.uleb128 0x13
+ 1391 009a 11       		.uleb128 0x11
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 28
+
+
+ 1392 009b 01       		.uleb128 0x1
+ 1393 009c 12       		.uleb128 0x12
+ 1394 009d 06       		.uleb128 0x6
+ 1395 009e 40       		.uleb128 0x40
+ 1396 009f 18       		.uleb128 0x18
+ 1397 00a0 9742     		.uleb128 0x2117
+ 1398 00a2 19       		.uleb128 0x19
+ 1399 00a3 01       		.uleb128 0x1
+ 1400 00a4 13       		.uleb128 0x13
+ 1401 00a5 00       		.byte	0
+ 1402 00a6 00       		.byte	0
+ 1403 00a7 0A       		.uleb128 0xa
+ 1404 00a8 898201   		.uleb128 0x4109
+ 1405 00ab 01       		.byte	0x1
+ 1406 00ac 11       		.uleb128 0x11
+ 1407 00ad 01       		.uleb128 0x1
+ 1408 00ae 31       		.uleb128 0x31
+ 1409 00af 13       		.uleb128 0x13
+ 1410 00b0 01       		.uleb128 0x1
+ 1411 00b1 13       		.uleb128 0x13
+ 1412 00b2 00       		.byte	0
+ 1413 00b3 00       		.byte	0
+ 1414 00b4 0B       		.uleb128 0xb
+ 1415 00b5 8A8201   		.uleb128 0x410a
+ 1416 00b8 00       		.byte	0
+ 1417 00b9 02       		.uleb128 0x2
+ 1418 00ba 18       		.uleb128 0x18
+ 1419 00bb 9142     		.uleb128 0x2111
+ 1420 00bd 18       		.uleb128 0x18
+ 1421 00be 00       		.byte	0
+ 1422 00bf 00       		.byte	0
+ 1423 00c0 0C       		.uleb128 0xc
+ 1424 00c1 898201   		.uleb128 0x4109
+ 1425 00c4 01       		.byte	0x1
+ 1426 00c5 11       		.uleb128 0x11
+ 1427 00c6 01       		.uleb128 0x1
+ 1428 00c7 31       		.uleb128 0x31
+ 1429 00c8 13       		.uleb128 0x13
+ 1430 00c9 00       		.byte	0
+ 1431 00ca 00       		.byte	0
+ 1432 00cb 0D       		.uleb128 0xd
+ 1433 00cc 2E       		.uleb128 0x2e
+ 1434 00cd 01       		.byte	0x1
+ 1435 00ce 3F       		.uleb128 0x3f
+ 1436 00cf 19       		.uleb128 0x19
+ 1437 00d0 03       		.uleb128 0x3
+ 1438 00d1 0E       		.uleb128 0xe
+ 1439 00d2 3A       		.uleb128 0x3a
+ 1440 00d3 0B       		.uleb128 0xb
+ 1441 00d4 3B       		.uleb128 0x3b
+ 1442 00d5 0B       		.uleb128 0xb
+ 1443 00d6 27       		.uleb128 0x27
+ 1444 00d7 19       		.uleb128 0x19
+ 1445 00d8 49       		.uleb128 0x49
+ 1446 00d9 13       		.uleb128 0x13
+ 1447 00da 11       		.uleb128 0x11
+ 1448 00db 01       		.uleb128 0x1
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 29
+
+
+ 1449 00dc 12       		.uleb128 0x12
+ 1450 00dd 06       		.uleb128 0x6
+ 1451 00de 40       		.uleb128 0x40
+ 1452 00df 18       		.uleb128 0x18
+ 1453 00e0 9742     		.uleb128 0x2117
+ 1454 00e2 19       		.uleb128 0x19
+ 1455 00e3 01       		.uleb128 0x1
+ 1456 00e4 13       		.uleb128 0x13
+ 1457 00e5 00       		.byte	0
+ 1458 00e6 00       		.byte	0
+ 1459 00e7 0E       		.uleb128 0xe
+ 1460 00e8 34       		.uleb128 0x34
+ 1461 00e9 00       		.byte	0
+ 1462 00ea 03       		.uleb128 0x3
+ 1463 00eb 0E       		.uleb128 0xe
+ 1464 00ec 3A       		.uleb128 0x3a
+ 1465 00ed 0B       		.uleb128 0xb
+ 1466 00ee 3B       		.uleb128 0x3b
+ 1467 00ef 0B       		.uleb128 0xb
+ 1468 00f0 49       		.uleb128 0x49
+ 1469 00f1 13       		.uleb128 0x13
+ 1470 00f2 02       		.uleb128 0x2
+ 1471 00f3 17       		.uleb128 0x17
+ 1472 00f4 00       		.byte	0
+ 1473 00f5 00       		.byte	0
+ 1474 00f6 0F       		.uleb128 0xf
+ 1475 00f7 898201   		.uleb128 0x4109
+ 1476 00fa 00       		.byte	0
+ 1477 00fb 11       		.uleb128 0x11
+ 1478 00fc 01       		.uleb128 0x1
+ 1479 00fd 31       		.uleb128 0x31
+ 1480 00fe 13       		.uleb128 0x13
+ 1481 00ff 00       		.byte	0
+ 1482 0100 00       		.byte	0
+ 1483 0101 10       		.uleb128 0x10
+ 1484 0102 2E       		.uleb128 0x2e
+ 1485 0103 01       		.byte	0x1
+ 1486 0104 3F       		.uleb128 0x3f
+ 1487 0105 19       		.uleb128 0x19
+ 1488 0106 03       		.uleb128 0x3
+ 1489 0107 0E       		.uleb128 0xe
+ 1490 0108 3A       		.uleb128 0x3a
+ 1491 0109 0B       		.uleb128 0xb
+ 1492 010a 3B       		.uleb128 0x3b
+ 1493 010b 0B       		.uleb128 0xb
+ 1494 010c 27       		.uleb128 0x27
+ 1495 010d 19       		.uleb128 0x19
+ 1496 010e 49       		.uleb128 0x49
+ 1497 010f 13       		.uleb128 0x13
+ 1498 0110 8701     		.uleb128 0x87
+ 1499 0112 19       		.uleb128 0x19
+ 1500 0113 11       		.uleb128 0x11
+ 1501 0114 01       		.uleb128 0x1
+ 1502 0115 12       		.uleb128 0x12
+ 1503 0116 06       		.uleb128 0x6
+ 1504 0117 40       		.uleb128 0x40
+ 1505 0118 18       		.uleb128 0x18
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 30
+
+
+ 1506 0119 9742     		.uleb128 0x2117
+ 1507 011b 19       		.uleb128 0x19
+ 1508 011c 01       		.uleb128 0x1
+ 1509 011d 13       		.uleb128 0x13
+ 1510 011e 00       		.byte	0
+ 1511 011f 00       		.byte	0
+ 1512 0120 11       		.uleb128 0x11
+ 1513 0121 0B       		.uleb128 0xb
+ 1514 0122 01       		.byte	0x1
+ 1515 0123 55       		.uleb128 0x55
+ 1516 0124 17       		.uleb128 0x17
+ 1517 0125 01       		.uleb128 0x1
+ 1518 0126 13       		.uleb128 0x13
+ 1519 0127 00       		.byte	0
+ 1520 0128 00       		.byte	0
+ 1521 0129 12       		.uleb128 0x12
+ 1522 012a 34       		.uleb128 0x34
+ 1523 012b 00       		.byte	0
+ 1524 012c 03       		.uleb128 0x3
+ 1525 012d 08       		.uleb128 0x8
+ 1526 012e 3A       		.uleb128 0x3a
+ 1527 012f 0B       		.uleb128 0xb
+ 1528 0130 3B       		.uleb128 0x3b
+ 1529 0131 0B       		.uleb128 0xb
+ 1530 0132 49       		.uleb128 0x49
+ 1531 0133 13       		.uleb128 0x13
+ 1532 0134 02       		.uleb128 0x2
+ 1533 0135 17       		.uleb128 0x17
+ 1534 0136 00       		.byte	0
+ 1535 0137 00       		.byte	0
+ 1536 0138 13       		.uleb128 0x13
+ 1537 0139 01       		.uleb128 0x1
+ 1538 013a 01       		.byte	0x1
+ 1539 013b 49       		.uleb128 0x49
+ 1540 013c 13       		.uleb128 0x13
+ 1541 013d 01       		.uleb128 0x1
+ 1542 013e 13       		.uleb128 0x13
+ 1543 013f 00       		.byte	0
+ 1544 0140 00       		.byte	0
+ 1545 0141 14       		.uleb128 0x14
+ 1546 0142 21       		.uleb128 0x21
+ 1547 0143 00       		.byte	0
+ 1548 0144 49       		.uleb128 0x49
+ 1549 0145 13       		.uleb128 0x13
+ 1550 0146 2F       		.uleb128 0x2f
+ 1551 0147 0B       		.uleb128 0xb
+ 1552 0148 00       		.byte	0
+ 1553 0149 00       		.byte	0
+ 1554 014a 15       		.uleb128 0x15
+ 1555 014b 34       		.uleb128 0x34
+ 1556 014c 00       		.byte	0
+ 1557 014d 03       		.uleb128 0x3
+ 1558 014e 0E       		.uleb128 0xe
+ 1559 014f 3A       		.uleb128 0x3a
+ 1560 0150 0B       		.uleb128 0xb
+ 1561 0151 3B       		.uleb128 0x3b
+ 1562 0152 0B       		.uleb128 0xb
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 31
+
+
+ 1563 0153 49       		.uleb128 0x49
+ 1564 0154 13       		.uleb128 0x13
+ 1565 0155 3F       		.uleb128 0x3f
+ 1566 0156 19       		.uleb128 0x19
+ 1567 0157 02       		.uleb128 0x2
+ 1568 0158 18       		.uleb128 0x18
+ 1569 0159 00       		.byte	0
+ 1570 015a 00       		.byte	0
+ 1571 015b 16       		.uleb128 0x16
+ 1572 015c 2E       		.uleb128 0x2e
+ 1573 015d 00       		.byte	0
+ 1574 015e 3F       		.uleb128 0x3f
+ 1575 015f 19       		.uleb128 0x19
+ 1576 0160 3C       		.uleb128 0x3c
+ 1577 0161 19       		.uleb128 0x19
+ 1578 0162 6E       		.uleb128 0x6e
+ 1579 0163 0E       		.uleb128 0xe
+ 1580 0164 03       		.uleb128 0x3
+ 1581 0165 0E       		.uleb128 0xe
+ 1582 0166 3A       		.uleb128 0x3a
+ 1583 0167 0B       		.uleb128 0xb
+ 1584 0168 3B       		.uleb128 0x3b
+ 1585 0169 0B       		.uleb128 0xb
+ 1586 016a 00       		.byte	0
+ 1587 016b 00       		.byte	0
+ 1588 016c 00       		.byte	0
+ 1589              		.section	.debug_loc,"",%progbits
+ 1590              	.Ldebug_loc0:
+ 1591              	.LLST0:
+ 1592 0000 02000000 		.4byte	.LVL9
+ 1593 0004 08000000 		.4byte	.LVL11
+ 1594 0008 0200     		.2byte	0x2
+ 1595 000a 30       		.byte	0x30
+ 1596 000b 9F       		.byte	0x9f
+ 1597 000c 08000000 		.4byte	.LVL11
+ 1598 0010 10000000 		.4byte	.LVL13
+ 1599 0014 0100     		.2byte	0x1
+ 1600 0016 55       		.byte	0x55
+ 1601 0017 12000000 		.4byte	.LVL14
+ 1602 001b 26000000 		.4byte	.LVL18
+ 1603 001f 0100     		.2byte	0x1
+ 1604 0021 54       		.byte	0x54
+ 1605 0022 26000000 		.4byte	.LVL18
+ 1606 0026 2C000000 		.4byte	.LFE40
+ 1607 002a 0100     		.2byte	0x1
+ 1608 002c 53       		.byte	0x53
+ 1609 002d 00000000 		.4byte	0
+ 1610 0031 00000000 		.4byte	0
+ 1611              	.LLST1:
+ 1612 0035 30000000 		.4byte	.LVL27
+ 1613 0039 33000000 		.4byte	.LVL28-1
+ 1614 003d 0100     		.2byte	0x1
+ 1615 003f 50       		.byte	0x50
+ 1616 0040 00000000 		.4byte	0
+ 1617 0044 00000000 		.4byte	0
+ 1618              	.LLST2:
+ 1619 0048 4E000000 		.4byte	.LVL33
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 32
+
+
+ 1620 004c 5E000000 		.4byte	.LVL37
+ 1621 0050 0100     		.2byte	0x1
+ 1622 0052 54       		.byte	0x54
+ 1623 0053 60000000 		.4byte	.LVL38
+ 1624 0057 6E000000 		.4byte	.LVL40
+ 1625 005b 0100     		.2byte	0x1
+ 1626 005d 54       		.byte	0x54
+ 1627 005e 00000000 		.4byte	0
+ 1628 0062 00000000 		.4byte	0
+ 1629              	.LLST3:
+ 1630 0066 78000000 		.4byte	.LVL42
+ 1631 006a AC000000 		.4byte	.LVL52
+ 1632 006e 0100     		.2byte	0x1
+ 1633 0070 54       		.byte	0x54
+ 1634 0071 AE000000 		.4byte	.LVL53
+ 1635 0075 C4000000 		.4byte	.LFE41
+ 1636 0079 0100     		.2byte	0x1
+ 1637 007b 54       		.byte	0x54
+ 1638 007c 00000000 		.4byte	0
+ 1639 0080 00000000 		.4byte	0
+ 1640              		.section	.debug_aranges,"",%progbits
+ 1641 0000 64000000 		.4byte	0x64
+ 1642 0004 0200     		.2byte	0x2
+ 1643 0006 00000000 		.4byte	.Ldebug_info0
+ 1644 000a 04       		.byte	0x4
+ 1645 000b 00       		.byte	0
+ 1646 000c 0000     		.2byte	0
+ 1647 000e 0000     		.2byte	0
+ 1648 0010 00000000 		.4byte	.LFB32
+ 1649 0014 0C000000 		.4byte	.LFE32-.LFB32
+ 1650 0018 00000000 		.4byte	.LFB33
+ 1651 001c 0C000000 		.4byte	.LFE33-.LFB33
+ 1652 0020 00000000 		.4byte	.LFB34
+ 1653 0024 10000000 		.4byte	.LFE34-.LFB34
+ 1654 0028 00000000 		.4byte	.LFB35
+ 1655 002c 10000000 		.4byte	.LFE35-.LFB35
+ 1656 0030 00000000 		.4byte	.LFB36
+ 1657 0034 10000000 		.4byte	.LFE36-.LFB36
+ 1658 0038 00000000 		.4byte	.LFB37
+ 1659 003c 10000000 		.4byte	.LFE37-.LFB37
+ 1660 0040 00000000 		.4byte	.LFB38
+ 1661 0044 0C000000 		.4byte	.LFE38-.LFB38
+ 1662 0048 00000000 		.4byte	.LFB39
+ 1663 004c 88000000 		.4byte	.LFE39-.LFB39
+ 1664 0050 00000000 		.4byte	.LFB40
+ 1665 0054 2C000000 		.4byte	.LFE40-.LFB40
+ 1666 0058 00000000 		.4byte	.LFB41
+ 1667 005c C4000000 		.4byte	.LFE41-.LFB41
+ 1668 0060 00000000 		.4byte	0
+ 1669 0064 00000000 		.4byte	0
+ 1670              		.section	.debug_ranges,"",%progbits
+ 1671              	.Ldebug_ranges0:
+ 1672 0000 4E000000 		.4byte	.LBB2
+ 1673 0004 5E000000 		.4byte	.LBE2
+ 1674 0008 60000000 		.4byte	.LBB3
+ 1675 000c 64000000 		.4byte	.LBE3
+ 1676 0010 00000000 		.4byte	0
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 33
+
+
+ 1677 0014 00000000 		.4byte	0
+ 1678 0018 78000000 		.4byte	.LBB4
+ 1679 001c AC000000 		.4byte	.LBE4
+ 1680 0020 AE000000 		.4byte	.LBB5
+ 1681 0024 B2000000 		.4byte	.LBE5
+ 1682 0028 00000000 		.4byte	0
+ 1683 002c 00000000 		.4byte	0
+ 1684 0030 00000000 		.4byte	.LFB32
+ 1685 0034 0C000000 		.4byte	.LFE32
+ 1686 0038 00000000 		.4byte	.LFB33
+ 1687 003c 0C000000 		.4byte	.LFE33
+ 1688 0040 00000000 		.4byte	.LFB34
+ 1689 0044 10000000 		.4byte	.LFE34
+ 1690 0048 00000000 		.4byte	.LFB35
+ 1691 004c 10000000 		.4byte	.LFE35
+ 1692 0050 00000000 		.4byte	.LFB36
+ 1693 0054 10000000 		.4byte	.LFE36
+ 1694 0058 00000000 		.4byte	.LFB37
+ 1695 005c 10000000 		.4byte	.LFE37
+ 1696 0060 00000000 		.4byte	.LFB38
+ 1697 0064 0C000000 		.4byte	.LFE38
+ 1698 0068 00000000 		.4byte	.LFB39
+ 1699 006c 88000000 		.4byte	.LFE39
+ 1700 0070 00000000 		.4byte	.LFB40
+ 1701 0074 2C000000 		.4byte	.LFE40
+ 1702 0078 00000000 		.4byte	.LFB41
+ 1703 007c C4000000 		.4byte	.LFE41
+ 1704 0080 00000000 		.4byte	0
+ 1705 0084 00000000 		.4byte	0
+ 1706              		.section	.debug_line,"",%progbits
+ 1707              	.Ldebug_line0:
+ 1708 0000 D2010000 		.section	.debug_str,"MS",%progbits,1
+ 1708      0200B100 
+ 1708      00000201 
+ 1708      FB0E0D00 
+ 1708      01010101 
+ 1709              	.LASF6:
+ 1710 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1710      206C6F6E 
+ 1710      6720696E 
+ 1710      7400
+ 1711              	.LASF30:
+ 1712 000e 73706565 		.ascii	"speed\000"
+ 1712      6400
+ 1713              	.LASF32:
+ 1714 0014 4144435F 		.ascii	"ADC_CountsTo_mVolts\000"
+ 1714      436F756E 
+ 1714      7473546F 
+ 1714      5F6D566F 
+ 1714      6C747300 
+ 1715              	.LASF26:
+ 1716 0028 6C65645F 		.ascii	"led_status\000"
+ 1716      73746174 
+ 1716      757300
+ 1717              	.LASF3:
+ 1718 0033 73686F72 		.ascii	"short unsigned int\000"
+ 1718      7420756E 
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 34
+
+
+ 1718      7369676E 
+ 1718      65642069 
+ 1718      6E7400
+ 1719              	.LASF20:
+ 1720 0046 6765745F 		.ascii	"get_pass_status\000"
+ 1720      70617373 
+ 1720      5F737461 
+ 1720      74757300 
+ 1721              	.LASF46:
+ 1722 0056 455A4932 		.ascii	"EZI2C_EzI2CGetActivity\000"
+ 1722      435F457A 
+ 1722      49324347 
+ 1722      65744163 
+ 1722      74697669 
+ 1723              	.LASF37:
+ 1724 006d 42757433 		.ascii	"But3_Read\000"
+ 1724      5F526561 
+ 1724      6400
+ 1725              	.LASF40:
+ 1726 0077 43794465 		.ascii	"CyDelay\000"
+ 1726      6C617900 
+ 1727              	.LASF23:
+ 1728 007f 7365745F 		.ascii	"set_init\000"
+ 1728      696E6974 
+ 1728      00
+ 1729              	.LASF12:
+ 1730 0088 666C6F61 		.ascii	"float\000"
+ 1730      7400
+ 1731              	.LASF45:
+ 1732 008e 4C43445F 		.ascii	"LCD_Start\000"
+ 1732      53746172 
+ 1732      7400
+ 1733              	.LASF1:
+ 1734 0098 756E7369 		.ascii	"unsigned char\000"
+ 1734      676E6564 
+ 1734      20636861 
+ 1734      7200
+ 1735              	.LASF17:
+ 1736 00a6 7365745F 		.ascii	"set_speed\000"
+ 1736      73706565 
+ 1736      6400
+ 1737              	.LASF11:
+ 1738 00b0 696E7431 		.ascii	"int16\000"
+ 1738      3600
+ 1739              	.LASF5:
+ 1740 00b6 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1740      20756E73 
+ 1740      69676E65 
+ 1740      6420696E 
+ 1740      7400
+ 1741              	.LASF9:
+ 1742 00c8 75696E74 		.ascii	"uint8\000"
+ 1742      3800
+ 1743              	.LASF50:
+ 1744 00ce 62757450 		.ascii	"butPressed\000"
+ 1744      72657373 
+ 1744      656400
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 35
+
+
+ 1745              	.LASF31:
+ 1746 00d9 4144435F 		.ascii	"ADC_GetResult16\000"
+ 1746      47657452 
+ 1746      6573756C 
+ 1746      74313600 
+ 1747              	.LASF27:
+ 1748 00e9 657A4932 		.ascii	"ezI2cBuffer\000"
+ 1748      63427566 
+ 1748      66657200 
+ 1749              	.LASF21:
+ 1750 00f5 6765745F 		.ascii	"get_fail_status\000"
+ 1750      6661696C 
+ 1750      5F737461 
+ 1750      74757300 
+ 1751              	.LASF49:
+ 1752 0105 433A5C55 		.ascii	"C:\\Users\\MIHAILO\\Documents\\PSoC Creator\\PSoC10"
+ 1752      73657273 
+ 1752      5C4D4948 
+ 1752      41494C4F 
+ 1752      5C446F63 
+ 1753 0133 315C5445 		.ascii	"1\\TEAMPROJECT.cydsn\000"
+ 1753      414D5052 
+ 1753      4F4A4543 
+ 1753      542E6379 
+ 1753      64736E00 
+ 1754              	.LASF13:
+ 1755 0147 646F7562 		.ascii	"double\000"
+ 1755      6C6500
+ 1756              	.LASF51:
+ 1757 014e 6D61696E 		.ascii	"main\000"
+ 1757      00
+ 1758              	.LASF34:
+ 1759 0153 4C43445F 		.ascii	"LCD_PrintString\000"
+ 1759      5072696E 
+ 1759      74537472 
+ 1759      696E6700 
+ 1760              	.LASF19:
+ 1761 0163 6765745F 		.ascii	"get_led_status\000"
+ 1761      6C65645F 
+ 1761      73746174 
+ 1761      757300
+ 1762              	.LASF10:
+ 1763 0172 75696E74 		.ascii	"uint32\000"
+ 1763      333200
+ 1764              	.LASF38:
+ 1765 0179 42757434 		.ascii	"But4_Read\000"
+ 1765      5F526561 
+ 1765      6400
+ 1766              	.LASF8:
+ 1767 0183 756E7369 		.ascii	"unsigned int\000"
+ 1767      676E6564 
+ 1767      20696E74 
+ 1767      00
+ 1768              	.LASF28:
+ 1769 0190 636F756E 		.ascii	"counts\000"
+ 1769      747300
+ 1770              	.LASF7:
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 36
+
+
+ 1771 0197 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1771      206C6F6E 
+ 1771      6720756E 
+ 1771      7369676E 
+ 1771      65642069 
+ 1772              	.LASF41:
+ 1773 01ae 455A4932 		.ascii	"EZI2C_EzI2CSetBuffer1\000"
+ 1773      435F457A 
+ 1773      49324353 
+ 1773      65744275 
+ 1773      66666572 
+ 1774              	.LASF35:
+ 1775 01c4 42757431 		.ascii	"But1_Read\000"
+ 1775      5F526561 
+ 1775      6400
+ 1776              	.LASF43:
+ 1777 01ce 4144435F 		.ascii	"ADC_Start\000"
+ 1777      53746172 
+ 1777      7400
+ 1778              	.LASF25:
+ 1779 01d8 6275745F 		.ascii	"but_status\000"
+ 1779      73746174 
+ 1779      757300
+ 1780              	.LASF47:
+ 1781 01e3 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1781      43313120 
+ 1781      352E342E 
+ 1781      31203230 
+ 1781      31363036 
+ 1782 0216 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1782      20726576 
+ 1782      6973696F 
+ 1782      6E203233 
+ 1782      37373135 
+ 1783 0249 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1783      66756E63 
+ 1783      74696F6E 
+ 1783      2D736563 
+ 1783      74696F6E 
+ 1784              	.LASF29:
+ 1785 0271 6D566F6C 		.ascii	"mVolts\000"
+ 1785      747300
+ 1786              	.LASF16:
+ 1787 0278 73697A65 		.ascii	"sizetype\000"
+ 1787      74797065 
+ 1787      00
+ 1788              	.LASF44:
+ 1789 0281 4144435F 		.ascii	"ADC_StartConvert\000"
+ 1789      53746172 
+ 1789      74436F6E 
+ 1789      76657274 
+ 1789      00
+ 1790              	.LASF48:
+ 1791 0292 6D61696E 		.ascii	"main.c\000"
+ 1791      2E6300
+ 1792              	.LASF14:
+ 1793 0299 63686172 		.ascii	"char\000"
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccHAZutO.s 			page 37
+
+
+ 1793      00
+ 1794              	.LASF2:
+ 1795 029e 73686F72 		.ascii	"short int\000"
+ 1795      7420696E 
+ 1795      7400
+ 1796              	.LASF24:
+ 1797 02a8 73706565 		.ascii	"speedf\000"
+ 1797      646600
+ 1798              	.LASF42:
+ 1799 02af 455A4932 		.ascii	"EZI2C_Start\000"
+ 1799      435F5374 
+ 1799      61727400 
+ 1800              	.LASF18:
+ 1801 02bb 7365745F 		.ascii	"set_button\000"
+ 1801      62757474 
+ 1801      6F6E00
+ 1802              	.LASF4:
+ 1803 02c6 6C6F6E67 		.ascii	"long int\000"
+ 1803      20696E74 
+ 1803      00
+ 1804              	.LASF15:
+ 1805 02cf 6C6F6E67 		.ascii	"long double\000"
+ 1805      20646F75 
+ 1805      626C6500 
+ 1806              	.LASF0:
+ 1807 02db 7369676E 		.ascii	"signed char\000"
+ 1807      65642063 
+ 1807      68617200 
+ 1808              	.LASF33:
+ 1809 02e7 4C43445F 		.ascii	"LCD_Position\000"
+ 1809      506F7369 
+ 1809      74696F6E 
+ 1809      00
+ 1810              	.LASF22:
+ 1811 02f4 6D616B65 		.ascii	"make_init\000"
+ 1811      5F696E69 
+ 1811      7400
+ 1812              	.LASF36:
+ 1813 02fe 42757432 		.ascii	"But2_Read\000"
+ 1813      5F526561 
+ 1813      6400
+ 1814              	.LASF39:
+ 1815 0308 4D617374 		.ascii	"MasterReg_Write\000"
+ 1815      65725265 
+ 1815      675F5772 
+ 1815      69746500 
+ 1816              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

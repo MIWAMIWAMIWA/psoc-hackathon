@@ -1,0 +1,505 @@
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cczWR8ns.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB32:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** 
+  14:main.c        **** int main(void)
+  15:main.c        **** {
+  28              		.loc 1 15 0
+  29              		.cfi_startproc
+  30              		@ Volatile: function does not return.
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 10B5     		push	{r4, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+  16:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  37              		.loc 1 16 0
+  38              		.syntax divided
+  39              	@ 16 "main.c" 1
+  40 0002 62B6     		CPSIE   i
+  41              	@ 0 "" 2
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cczWR8ns.s 			page 2
+
+
+  42              		.thumb
+  43              		.syntax unified
+  44              	.L2:
+  17:main.c        **** 
+  18:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  19:main.c        **** 
+  20:main.c        ****     for(;;)
+  21:main.c        ****     {
+  22:main.c        ****         /* Place your application code here. */
+  23:main.c        ****         PSOC_Pin_Write(1);
+  45              		.loc 1 23 0 discriminator 1
+  46 0004 0120     		movs	r0, #1
+  47 0006 FFF7FEFF 		bl	PSOC_Pin_Write
+  48              	.LVL0:
+  24:main.c        ****         CyDelay(100);
+  49              		.loc 1 24 0 discriminator 1
+  50 000a 6420     		movs	r0, #100
+  51 000c FFF7FEFF 		bl	CyDelay
+  52              	.LVL1:
+  25:main.c        ****         PSOC_Pin_Write(0);
+  53              		.loc 1 25 0 discriminator 1
+  54 0010 0020     		movs	r0, #0
+  55 0012 FFF7FEFF 		bl	PSOC_Pin_Write
+  56              	.LVL2:
+  26:main.c        ****         CyDelay(100);
+  57              		.loc 1 26 0 discriminator 1
+  58 0016 6420     		movs	r0, #100
+  59 0018 FFF7FEFF 		bl	CyDelay
+  60              	.LVL3:
+  61 001c F2E7     		b	.L2
+  62              		.cfi_endproc
+  63              	.LFE32:
+  64              		.size	main, .-main
+  65 001e C046     		.text
+  66              	.Letext0:
+  67              		.file 2 "Generated_Source\\PSoC4/PSOC_Pin.h"
+  68              		.file 3 "Generated_Source\\PSoC4/CyLib.h"
+  69              		.section	.debug_info,"",%progbits
+  70              	.Ldebug_info0:
+  71 0000 05010000 		.4byte	0x105
+  72 0004 0400     		.2byte	0x4
+  73 0006 00000000 		.4byte	.Ldebug_abbrev0
+  74 000a 04       		.byte	0x4
+  75 000b 01       		.uleb128 0x1
+  76 000c D0000000 		.4byte	.LASF16
+  77 0010 0C       		.byte	0xc
+  78 0011 1B000000 		.4byte	.LASF17
+  79 0015 58000000 		.4byte	.LASF18
+  80 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  81 001d 00000000 		.4byte	0
+  82 0021 00000000 		.4byte	.Ldebug_line0
+  83 0025 02       		.uleb128 0x2
+  84 0026 01       		.byte	0x1
+  85 0027 06       		.byte	0x6
+  86 0028 71010000 		.4byte	.LASF0
+  87 002c 02       		.uleb128 0x2
+  88 002d 01       		.byte	0x1
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cczWR8ns.s 			page 3
+
+
+  89 002e 08       		.byte	0x8
+  90 002f 94000000 		.4byte	.LASF1
+  91 0033 02       		.uleb128 0x2
+  92 0034 02       		.byte	0x2
+  93 0035 05       		.byte	0x5
+  94 0036 B0000000 		.4byte	.LASF2
+  95 003a 02       		.uleb128 0x2
+  96 003b 02       		.byte	0x2
+  97 003c 07       		.byte	0x7
+  98 003d 5E010000 		.4byte	.LASF3
+  99 0041 02       		.uleb128 0x2
+ 100 0042 04       		.byte	0x4
+ 101 0043 05       		.byte	0x5
+ 102 0044 A7000000 		.4byte	.LASF4
+ 103 0048 02       		.uleb128 0x2
+ 104 0049 04       		.byte	0x4
+ 105 004a 07       		.byte	0x7
+ 106 004b 2F000000 		.4byte	.LASF5
+ 107 004f 02       		.uleb128 0x2
+ 108 0050 08       		.byte	0x8
+ 109 0051 05       		.byte	0x5
+ 110 0052 00000000 		.4byte	.LASF6
+ 111 0056 02       		.uleb128 0x2
+ 112 0057 08       		.byte	0x8
+ 113 0058 07       		.byte	0x7
+ 114 0059 41000000 		.4byte	.LASF7
+ 115 005d 03       		.uleb128 0x3
+ 116 005e 04       		.byte	0x4
+ 117 005f 05       		.byte	0x5
+ 118 0060 696E7400 		.ascii	"int\000"
+ 119 0064 02       		.uleb128 0x2
+ 120 0065 04       		.byte	0x4
+ 121 0066 07       		.byte	0x7
+ 122 0067 0E000000 		.4byte	.LASF8
+ 123 006b 02       		.uleb128 0x2
+ 124 006c 04       		.byte	0x4
+ 125 006d 04       		.byte	0x4
+ 126 006e 89010000 		.4byte	.LASF9
+ 127 0072 02       		.uleb128 0x2
+ 128 0073 08       		.byte	0x8
+ 129 0074 04       		.byte	0x4
+ 130 0075 C9000000 		.4byte	.LASF10
+ 131 0079 02       		.uleb128 0x2
+ 132 007a 01       		.byte	0x1
+ 133 007b 08       		.byte	0x8
+ 134 007c A2000000 		.4byte	.LASF11
+ 135 0080 02       		.uleb128 0x2
+ 136 0081 04       		.byte	0x4
+ 137 0082 07       		.byte	0x7
+ 138 0083 8F010000 		.4byte	.LASF12
+ 139 0087 02       		.uleb128 0x2
+ 140 0088 08       		.byte	0x8
+ 141 0089 04       		.byte	0x4
+ 142 008a 7D010000 		.4byte	.LASF13
+ 143 008e 04       		.uleb128 0x4
+ 144 008f 22000000 		.4byte	.LASF19
+ 145 0093 01       		.byte	0x1
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cczWR8ns.s 			page 4
+
+
+ 146 0094 0E       		.byte	0xe
+ 147 0095 5D000000 		.4byte	0x5d
+ 148 0099 00000000 		.4byte	.LFB32
+ 149 009d 1E000000 		.4byte	.LFE32-.LFB32
+ 150 00a1 01       		.uleb128 0x1
+ 151 00a2 9C       		.byte	0x9c
+ 152 00a3 F2000000 		.4byte	0xf2
+ 153 00a7 05       		.uleb128 0x5
+ 154 00a8 0A000000 		.4byte	.LVL0
+ 155 00ac F2000000 		.4byte	0xf2
+ 156 00b0 BA000000 		.4byte	0xba
+ 157 00b4 06       		.uleb128 0x6
+ 158 00b5 01       		.uleb128 0x1
+ 159 00b6 50       		.byte	0x50
+ 160 00b7 01       		.uleb128 0x1
+ 161 00b8 31       		.byte	0x31
+ 162 00b9 00       		.byte	0
+ 163 00ba 05       		.uleb128 0x5
+ 164 00bb 10000000 		.4byte	.LVL1
+ 165 00bf FD000000 		.4byte	0xfd
+ 166 00c3 CE000000 		.4byte	0xce
+ 167 00c7 06       		.uleb128 0x6
+ 168 00c8 01       		.uleb128 0x1
+ 169 00c9 50       		.byte	0x50
+ 170 00ca 02       		.uleb128 0x2
+ 171 00cb 08       		.byte	0x8
+ 172 00cc 64       		.byte	0x64
+ 173 00cd 00       		.byte	0
+ 174 00ce 05       		.uleb128 0x5
+ 175 00cf 16000000 		.4byte	.LVL2
+ 176 00d3 F2000000 		.4byte	0xf2
+ 177 00d7 E1000000 		.4byte	0xe1
+ 178 00db 06       		.uleb128 0x6
+ 179 00dc 01       		.uleb128 0x1
+ 180 00dd 50       		.byte	0x50
+ 181 00de 01       		.uleb128 0x1
+ 182 00df 30       		.byte	0x30
+ 183 00e0 00       		.byte	0
+ 184 00e1 07       		.uleb128 0x7
+ 185 00e2 1C000000 		.4byte	.LVL3
+ 186 00e6 FD000000 		.4byte	0xfd
+ 187 00ea 06       		.uleb128 0x6
+ 188 00eb 01       		.uleb128 0x1
+ 189 00ec 50       		.byte	0x50
+ 190 00ed 02       		.uleb128 0x2
+ 191 00ee 08       		.byte	0x8
+ 192 00ef 64       		.byte	0x64
+ 193 00f0 00       		.byte	0
+ 194 00f1 00       		.byte	0
+ 195 00f2 08       		.uleb128 0x8
+ 196 00f3 BA000000 		.4byte	.LASF14
+ 197 00f7 BA000000 		.4byte	.LASF14
+ 198 00fb 02       		.byte	0x2
+ 199 00fc 33       		.byte	0x33
+ 200 00fd 08       		.uleb128 0x8
+ 201 00fe 27000000 		.4byte	.LASF15
+ 202 0102 27000000 		.4byte	.LASF15
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cczWR8ns.s 			page 5
+
+
+ 203 0106 03       		.byte	0x3
+ 204 0107 EC       		.byte	0xec
+ 205 0108 00       		.byte	0
+ 206              		.section	.debug_abbrev,"",%progbits
+ 207              	.Ldebug_abbrev0:
+ 208 0000 01       		.uleb128 0x1
+ 209 0001 11       		.uleb128 0x11
+ 210 0002 01       		.byte	0x1
+ 211 0003 25       		.uleb128 0x25
+ 212 0004 0E       		.uleb128 0xe
+ 213 0005 13       		.uleb128 0x13
+ 214 0006 0B       		.uleb128 0xb
+ 215 0007 03       		.uleb128 0x3
+ 216 0008 0E       		.uleb128 0xe
+ 217 0009 1B       		.uleb128 0x1b
+ 218 000a 0E       		.uleb128 0xe
+ 219 000b 55       		.uleb128 0x55
+ 220 000c 17       		.uleb128 0x17
+ 221 000d 11       		.uleb128 0x11
+ 222 000e 01       		.uleb128 0x1
+ 223 000f 10       		.uleb128 0x10
+ 224 0010 17       		.uleb128 0x17
+ 225 0011 00       		.byte	0
+ 226 0012 00       		.byte	0
+ 227 0013 02       		.uleb128 0x2
+ 228 0014 24       		.uleb128 0x24
+ 229 0015 00       		.byte	0
+ 230 0016 0B       		.uleb128 0xb
+ 231 0017 0B       		.uleb128 0xb
+ 232 0018 3E       		.uleb128 0x3e
+ 233 0019 0B       		.uleb128 0xb
+ 234 001a 03       		.uleb128 0x3
+ 235 001b 0E       		.uleb128 0xe
+ 236 001c 00       		.byte	0
+ 237 001d 00       		.byte	0
+ 238 001e 03       		.uleb128 0x3
+ 239 001f 24       		.uleb128 0x24
+ 240 0020 00       		.byte	0
+ 241 0021 0B       		.uleb128 0xb
+ 242 0022 0B       		.uleb128 0xb
+ 243 0023 3E       		.uleb128 0x3e
+ 244 0024 0B       		.uleb128 0xb
+ 245 0025 03       		.uleb128 0x3
+ 246 0026 08       		.uleb128 0x8
+ 247 0027 00       		.byte	0
+ 248 0028 00       		.byte	0
+ 249 0029 04       		.uleb128 0x4
+ 250 002a 2E       		.uleb128 0x2e
+ 251 002b 01       		.byte	0x1
+ 252 002c 3F       		.uleb128 0x3f
+ 253 002d 19       		.uleb128 0x19
+ 254 002e 03       		.uleb128 0x3
+ 255 002f 0E       		.uleb128 0xe
+ 256 0030 3A       		.uleb128 0x3a
+ 257 0031 0B       		.uleb128 0xb
+ 258 0032 3B       		.uleb128 0x3b
+ 259 0033 0B       		.uleb128 0xb
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cczWR8ns.s 			page 6
+
+
+ 260 0034 27       		.uleb128 0x27
+ 261 0035 19       		.uleb128 0x19
+ 262 0036 49       		.uleb128 0x49
+ 263 0037 13       		.uleb128 0x13
+ 264 0038 8701     		.uleb128 0x87
+ 265 003a 19       		.uleb128 0x19
+ 266 003b 11       		.uleb128 0x11
+ 267 003c 01       		.uleb128 0x1
+ 268 003d 12       		.uleb128 0x12
+ 269 003e 06       		.uleb128 0x6
+ 270 003f 40       		.uleb128 0x40
+ 271 0040 18       		.uleb128 0x18
+ 272 0041 9742     		.uleb128 0x2117
+ 273 0043 19       		.uleb128 0x19
+ 274 0044 01       		.uleb128 0x1
+ 275 0045 13       		.uleb128 0x13
+ 276 0046 00       		.byte	0
+ 277 0047 00       		.byte	0
+ 278 0048 05       		.uleb128 0x5
+ 279 0049 898201   		.uleb128 0x4109
+ 280 004c 01       		.byte	0x1
+ 281 004d 11       		.uleb128 0x11
+ 282 004e 01       		.uleb128 0x1
+ 283 004f 31       		.uleb128 0x31
+ 284 0050 13       		.uleb128 0x13
+ 285 0051 01       		.uleb128 0x1
+ 286 0052 13       		.uleb128 0x13
+ 287 0053 00       		.byte	0
+ 288 0054 00       		.byte	0
+ 289 0055 06       		.uleb128 0x6
+ 290 0056 8A8201   		.uleb128 0x410a
+ 291 0059 00       		.byte	0
+ 292 005a 02       		.uleb128 0x2
+ 293 005b 18       		.uleb128 0x18
+ 294 005c 9142     		.uleb128 0x2111
+ 295 005e 18       		.uleb128 0x18
+ 296 005f 00       		.byte	0
+ 297 0060 00       		.byte	0
+ 298 0061 07       		.uleb128 0x7
+ 299 0062 898201   		.uleb128 0x4109
+ 300 0065 01       		.byte	0x1
+ 301 0066 11       		.uleb128 0x11
+ 302 0067 01       		.uleb128 0x1
+ 303 0068 31       		.uleb128 0x31
+ 304 0069 13       		.uleb128 0x13
+ 305 006a 00       		.byte	0
+ 306 006b 00       		.byte	0
+ 307 006c 08       		.uleb128 0x8
+ 308 006d 2E       		.uleb128 0x2e
+ 309 006e 00       		.byte	0
+ 310 006f 3F       		.uleb128 0x3f
+ 311 0070 19       		.uleb128 0x19
+ 312 0071 3C       		.uleb128 0x3c
+ 313 0072 19       		.uleb128 0x19
+ 314 0073 6E       		.uleb128 0x6e
+ 315 0074 0E       		.uleb128 0xe
+ 316 0075 03       		.uleb128 0x3
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cczWR8ns.s 			page 7
+
+
+ 317 0076 0E       		.uleb128 0xe
+ 318 0077 3A       		.uleb128 0x3a
+ 319 0078 0B       		.uleb128 0xb
+ 320 0079 3B       		.uleb128 0x3b
+ 321 007a 0B       		.uleb128 0xb
+ 322 007b 00       		.byte	0
+ 323 007c 00       		.byte	0
+ 324 007d 00       		.byte	0
+ 325              		.section	.debug_aranges,"",%progbits
+ 326 0000 1C000000 		.4byte	0x1c
+ 327 0004 0200     		.2byte	0x2
+ 328 0006 00000000 		.4byte	.Ldebug_info0
+ 329 000a 04       		.byte	0x4
+ 330 000b 00       		.byte	0
+ 331 000c 0000     		.2byte	0
+ 332 000e 0000     		.2byte	0
+ 333 0010 00000000 		.4byte	.LFB32
+ 334 0014 1E000000 		.4byte	.LFE32-.LFB32
+ 335 0018 00000000 		.4byte	0
+ 336 001c 00000000 		.4byte	0
+ 337              		.section	.debug_ranges,"",%progbits
+ 338              	.Ldebug_ranges0:
+ 339 0000 00000000 		.4byte	.LFB32
+ 340 0004 1E000000 		.4byte	.LFE32
+ 341 0008 00000000 		.4byte	0
+ 342 000c 00000000 		.4byte	0
+ 343              		.section	.debug_line,"",%progbits
+ 344              	.Ldebug_line0:
+ 345 0000 77000000 		.section	.debug_str,"MS",%progbits,1
+ 345      02004D00 
+ 345      00000201 
+ 345      FB0E0D00 
+ 345      01010101 
+ 346              	.LASF6:
+ 347 0000 6C6F6E67 		.ascii	"long long int\000"
+ 347      206C6F6E 
+ 347      6720696E 
+ 347      7400
+ 348              	.LASF8:
+ 349 000e 756E7369 		.ascii	"unsigned int\000"
+ 349      676E6564 
+ 349      20696E74 
+ 349      00
+ 350              	.LASF17:
+ 351 001b 6D61696E 		.ascii	"main.c\000"
+ 351      2E6300
+ 352              	.LASF19:
+ 353 0022 6D61696E 		.ascii	"main\000"
+ 353      00
+ 354              	.LASF15:
+ 355 0027 43794465 		.ascii	"CyDelay\000"
+ 355      6C617900 
+ 356              	.LASF5:
+ 357 002f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 357      20756E73 
+ 357      69676E65 
+ 357      6420696E 
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cczWR8ns.s 			page 8
+
+
+ 357      7400
+ 358              	.LASF7:
+ 359 0041 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 359      206C6F6E 
+ 359      6720756E 
+ 359      7369676E 
+ 359      65642069 
+ 360              	.LASF18:
+ 361 0058 433A5C55 		.ascii	"C:\\Users\\MIHAILO\\Documents\\PSoC Creator\\PSoC10"
+ 361      73657273 
+ 361      5C4D4948 
+ 361      41494C4F 
+ 361      5C446F63 
+ 362 0086 315C4C61 		.ascii	"1\\Lab02.cydsn\000"
+ 362      6230322E 
+ 362      63796473 
+ 362      6E00
+ 363              	.LASF1:
+ 364 0094 756E7369 		.ascii	"unsigned char\000"
+ 364      676E6564 
+ 364      20636861 
+ 364      7200
+ 365              	.LASF11:
+ 366 00a2 63686172 		.ascii	"char\000"
+ 366      00
+ 367              	.LASF4:
+ 368 00a7 6C6F6E67 		.ascii	"long int\000"
+ 368      20696E74 
+ 368      00
+ 369              	.LASF2:
+ 370 00b0 73686F72 		.ascii	"short int\000"
+ 370      7420696E 
+ 370      7400
+ 371              	.LASF14:
+ 372 00ba 50534F43 		.ascii	"PSOC_Pin_Write\000"
+ 372      5F50696E 
+ 372      5F577269 
+ 372      746500
+ 373              	.LASF10:
+ 374 00c9 646F7562 		.ascii	"double\000"
+ 374      6C6500
+ 375              	.LASF16:
+ 376 00d0 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 376      43313120 
+ 376      352E342E 
+ 376      31203230 
+ 376      31363036 
+ 377 0103 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 377      20726576 
+ 377      6973696F 
+ 377      6E203233 
+ 377      37373135 
+ 378 0136 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 378      66756E63 
+ 378      74696F6E 
+ 378      2D736563 
+ 378      74696F6E 
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cczWR8ns.s 			page 9
+
+
+ 379              	.LASF3:
+ 380 015e 73686F72 		.ascii	"short unsigned int\000"
+ 380      7420756E 
+ 380      7369676E 
+ 380      65642069 
+ 380      6E7400
+ 381              	.LASF0:
+ 382 0171 7369676E 		.ascii	"signed char\000"
+ 382      65642063 
+ 382      68617200 
+ 383              	.LASF13:
+ 384 017d 6C6F6E67 		.ascii	"long double\000"
+ 384      20646F75 
+ 384      626C6500 
+ 385              	.LASF9:
+ 386 0189 666C6F61 		.ascii	"float\000"
+ 386      7400
+ 387              	.LASF12:
+ 388 018f 73697A65 		.ascii	"sizetype\000"
+ 388      74797065 
+ 388      00
+ 389              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
