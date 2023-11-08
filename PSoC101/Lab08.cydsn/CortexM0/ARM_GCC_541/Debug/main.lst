@@ -1,0 +1,511 @@
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccaPuui0.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB32:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** 
+  14:main.c        **** int main(void)
+  15:main.c        **** {
+  28              		.loc 1 15 0
+  29              		.cfi_startproc
+  30              		@ Volatile: function does not return.
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 10B5     		push	{r4, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+  16:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  37              		.loc 1 16 0
+  38              		.syntax divided
+  39              	@ 16 "main.c" 1
+  40 0002 62B6     		CPSIE   i
+  41              	@ 0 "" 2
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccaPuui0.s 			page 2
+
+
+  17:main.c        ****     LCD_Char_1_Start();
+  42              		.loc 1 17 0
+  43              		.thumb
+  44              		.syntax unified
+  45 0004 FFF7FEFF 		bl	LCD_Char_1_Start
+  46              	.LVL0:
+  47              	.L2:
+  18:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  19:main.c        **** 
+  20:main.c        ****     for(;;)
+  21:main.c        ****     {
+  22:main.c        ****        LCD_Char_1_Position(0,0);
+  48              		.loc 1 22 0 discriminator 1
+  49 0008 0021     		movs	r1, #0
+  50 000a 0020     		movs	r0, #0
+  51 000c FFF7FEFF 		bl	LCD_Char_1_Position
+  52              	.LVL1:
+  23:main.c        ****        LCD_Char_1_PrintInt8(15-Status_Reg_1_Read());
+  53              		.loc 1 23 0 discriminator 1
+  54 0010 FFF7FEFF 		bl	Status_Reg_1_Read
+  55              	.LVL2:
+  56 0014 0F23     		movs	r3, #15
+  57 0016 181A     		subs	r0, r3, r0
+  58 0018 C0B2     		uxtb	r0, r0
+  59 001a FFF7FEFF 		bl	LCD_Char_1_PrintInt8
+  60              	.LVL3:
+  61 001e F3E7     		b	.L2
+  62              		.cfi_endproc
+  63              	.LFE32:
+  64              		.size	main, .-main
+  65              		.text
+  66              	.Letext0:
+  67              		.file 2 "Generated_Source\\PSoC4/LCD_Char_1.h"
+  68              		.file 3 "Generated_Source\\PSoC4/Status_Reg_1.h"
+  69              		.section	.debug_info,"",%progbits
+  70              	.Ldebug_info0:
+  71 0000 04010000 		.4byte	0x104
+  72 0004 0400     		.2byte	0x4
+  73 0006 00000000 		.4byte	.Ldebug_abbrev0
+  74 000a 04       		.byte	0x4
+  75 000b 01       		.uleb128 0x1
+  76 000c EF000000 		.4byte	.LASF18
+  77 0010 0C       		.byte	0xc
+  78 0011 1B000000 		.4byte	.LASF19
+  79 0015 B3000000 		.4byte	.LASF20
+  80 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  81 001d 00000000 		.4byte	0
+  82 0021 00000000 		.4byte	.Ldebug_line0
+  83 0025 02       		.uleb128 0x2
+  84 0026 01       		.byte	0x1
+  85 0027 06       		.byte	0x6
+  86 0028 90010000 		.4byte	.LASF0
+  87 002c 02       		.uleb128 0x2
+  88 002d 01       		.byte	0x1
+  89 002e 08       		.byte	0x8
+  90 002f 6A000000 		.4byte	.LASF1
+  91 0033 02       		.uleb128 0x2
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccaPuui0.s 			page 3
+
+
+  92 0034 02       		.byte	0x2
+  93 0035 05       		.byte	0x5
+  94 0036 BA010000 		.4byte	.LASF2
+  95 003a 02       		.uleb128 0x2
+  96 003b 02       		.byte	0x2
+  97 003c 07       		.byte	0x7
+  98 003d 7D010000 		.4byte	.LASF3
+  99 0041 02       		.uleb128 0x2
+ 100 0042 04       		.byte	0x4
+ 101 0043 05       		.byte	0x5
+ 102 0044 91000000 		.4byte	.LASF4
+ 103 0048 02       		.uleb128 0x2
+ 104 0049 04       		.byte	0x4
+ 105 004a 07       		.byte	0x7
+ 106 004b 9A000000 		.4byte	.LASF5
+ 107 004f 02       		.uleb128 0x2
+ 108 0050 08       		.byte	0x8
+ 109 0051 05       		.byte	0x5
+ 110 0052 00000000 		.4byte	.LASF6
+ 111 0056 02       		.uleb128 0x2
+ 112 0057 08       		.byte	0x8
+ 113 0058 07       		.byte	0x7
+ 114 0059 4D000000 		.4byte	.LASF7
+ 115 005d 03       		.uleb128 0x3
+ 116 005e 04       		.byte	0x4
+ 117 005f 05       		.byte	0x5
+ 118 0060 696E7400 		.ascii	"int\000"
+ 119 0064 02       		.uleb128 0x2
+ 120 0065 04       		.byte	0x4
+ 121 0066 07       		.byte	0x7
+ 122 0067 0E000000 		.4byte	.LASF8
+ 123 006b 02       		.uleb128 0x2
+ 124 006c 04       		.byte	0x4
+ 125 006d 04       		.byte	0x4
+ 126 006e 64000000 		.4byte	.LASF9
+ 127 0072 02       		.uleb128 0x2
+ 128 0073 08       		.byte	0x8
+ 129 0074 04       		.byte	0x4
+ 130 0075 AC000000 		.4byte	.LASF10
+ 131 0079 02       		.uleb128 0x2
+ 132 007a 01       		.byte	0x1
+ 133 007b 08       		.byte	0x8
+ 134 007c 8C000000 		.4byte	.LASF11
+ 135 0080 02       		.uleb128 0x2
+ 136 0081 08       		.byte	0x8
+ 137 0082 04       		.byte	0x4
+ 138 0083 AE010000 		.4byte	.LASF12
+ 139 0087 02       		.uleb128 0x2
+ 140 0088 04       		.byte	0x4
+ 141 0089 07       		.byte	0x7
+ 142 008a C4010000 		.4byte	.LASF13
+ 143 008e 04       		.uleb128 0x4
+ 144 008f 22000000 		.4byte	.LASF21
+ 145 0093 01       		.byte	0x1
+ 146 0094 0E       		.byte	0xe
+ 147 0095 5D000000 		.4byte	0x5d
+ 148 0099 00000000 		.4byte	.LFB32
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccaPuui0.s 			page 4
+
+
+ 149 009d 20000000 		.4byte	.LFE32-.LFB32
+ 150 00a1 01       		.uleb128 0x1
+ 151 00a2 9C       		.byte	0x9c
+ 152 00a3 DB000000 		.4byte	0xdb
+ 153 00a7 05       		.uleb128 0x5
+ 154 00a8 08000000 		.4byte	.LVL0
+ 155 00ac DB000000 		.4byte	0xdb
+ 156 00b0 06       		.uleb128 0x6
+ 157 00b1 10000000 		.4byte	.LVL1
+ 158 00b5 E6000000 		.4byte	0xe6
+ 159 00b9 C8000000 		.4byte	0xc8
+ 160 00bd 07       		.uleb128 0x7
+ 161 00be 01       		.uleb128 0x1
+ 162 00bf 50       		.byte	0x50
+ 163 00c0 01       		.uleb128 0x1
+ 164 00c1 30       		.byte	0x30
+ 165 00c2 07       		.uleb128 0x7
+ 166 00c3 01       		.uleb128 0x1
+ 167 00c4 51       		.byte	0x51
+ 168 00c5 01       		.uleb128 0x1
+ 169 00c6 30       		.byte	0x30
+ 170 00c7 00       		.byte	0
+ 171 00c8 05       		.uleb128 0x5
+ 172 00c9 14000000 		.4byte	.LVL2
+ 173 00cd F1000000 		.4byte	0xf1
+ 174 00d1 05       		.uleb128 0x5
+ 175 00d2 1E000000 		.4byte	.LVL3
+ 176 00d6 FC000000 		.4byte	0xfc
+ 177 00da 00       		.byte	0
+ 178 00db 08       		.uleb128 0x8
+ 179 00dc 27000000 		.4byte	.LASF14
+ 180 00e0 27000000 		.4byte	.LASF14
+ 181 00e4 02       		.byte	0x2
+ 182 00e5 38       		.byte	0x38
+ 183 00e6 08       		.uleb128 0x8
+ 184 00e7 78000000 		.4byte	.LASF15
+ 185 00eb 78000000 		.4byte	.LASF15
+ 186 00ef 02       		.byte	0x2
+ 187 00f0 3D       		.byte	0x3d
+ 188 00f1 08       		.uleb128 0x8
+ 189 00f2 9C010000 		.4byte	.LASF16
+ 190 00f6 9C010000 		.4byte	.LASF16
+ 191 00fa 03       		.byte	0x3
+ 192 00fb 30       		.byte	0x30
+ 193 00fc 08       		.uleb128 0x8
+ 194 00fd 38000000 		.4byte	.LASF17
+ 195 0101 38000000 		.4byte	.LASF17
+ 196 0105 02       		.byte	0x2
+ 197 0106 5D       		.byte	0x5d
+ 198 0107 00       		.byte	0
+ 199              		.section	.debug_abbrev,"",%progbits
+ 200              	.Ldebug_abbrev0:
+ 201 0000 01       		.uleb128 0x1
+ 202 0001 11       		.uleb128 0x11
+ 203 0002 01       		.byte	0x1
+ 204 0003 25       		.uleb128 0x25
+ 205 0004 0E       		.uleb128 0xe
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccaPuui0.s 			page 5
+
+
+ 206 0005 13       		.uleb128 0x13
+ 207 0006 0B       		.uleb128 0xb
+ 208 0007 03       		.uleb128 0x3
+ 209 0008 0E       		.uleb128 0xe
+ 210 0009 1B       		.uleb128 0x1b
+ 211 000a 0E       		.uleb128 0xe
+ 212 000b 55       		.uleb128 0x55
+ 213 000c 17       		.uleb128 0x17
+ 214 000d 11       		.uleb128 0x11
+ 215 000e 01       		.uleb128 0x1
+ 216 000f 10       		.uleb128 0x10
+ 217 0010 17       		.uleb128 0x17
+ 218 0011 00       		.byte	0
+ 219 0012 00       		.byte	0
+ 220 0013 02       		.uleb128 0x2
+ 221 0014 24       		.uleb128 0x24
+ 222 0015 00       		.byte	0
+ 223 0016 0B       		.uleb128 0xb
+ 224 0017 0B       		.uleb128 0xb
+ 225 0018 3E       		.uleb128 0x3e
+ 226 0019 0B       		.uleb128 0xb
+ 227 001a 03       		.uleb128 0x3
+ 228 001b 0E       		.uleb128 0xe
+ 229 001c 00       		.byte	0
+ 230 001d 00       		.byte	0
+ 231 001e 03       		.uleb128 0x3
+ 232 001f 24       		.uleb128 0x24
+ 233 0020 00       		.byte	0
+ 234 0021 0B       		.uleb128 0xb
+ 235 0022 0B       		.uleb128 0xb
+ 236 0023 3E       		.uleb128 0x3e
+ 237 0024 0B       		.uleb128 0xb
+ 238 0025 03       		.uleb128 0x3
+ 239 0026 08       		.uleb128 0x8
+ 240 0027 00       		.byte	0
+ 241 0028 00       		.byte	0
+ 242 0029 04       		.uleb128 0x4
+ 243 002a 2E       		.uleb128 0x2e
+ 244 002b 01       		.byte	0x1
+ 245 002c 3F       		.uleb128 0x3f
+ 246 002d 19       		.uleb128 0x19
+ 247 002e 03       		.uleb128 0x3
+ 248 002f 0E       		.uleb128 0xe
+ 249 0030 3A       		.uleb128 0x3a
+ 250 0031 0B       		.uleb128 0xb
+ 251 0032 3B       		.uleb128 0x3b
+ 252 0033 0B       		.uleb128 0xb
+ 253 0034 27       		.uleb128 0x27
+ 254 0035 19       		.uleb128 0x19
+ 255 0036 49       		.uleb128 0x49
+ 256 0037 13       		.uleb128 0x13
+ 257 0038 8701     		.uleb128 0x87
+ 258 003a 19       		.uleb128 0x19
+ 259 003b 11       		.uleb128 0x11
+ 260 003c 01       		.uleb128 0x1
+ 261 003d 12       		.uleb128 0x12
+ 262 003e 06       		.uleb128 0x6
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccaPuui0.s 			page 6
+
+
+ 263 003f 40       		.uleb128 0x40
+ 264 0040 18       		.uleb128 0x18
+ 265 0041 9742     		.uleb128 0x2117
+ 266 0043 19       		.uleb128 0x19
+ 267 0044 01       		.uleb128 0x1
+ 268 0045 13       		.uleb128 0x13
+ 269 0046 00       		.byte	0
+ 270 0047 00       		.byte	0
+ 271 0048 05       		.uleb128 0x5
+ 272 0049 898201   		.uleb128 0x4109
+ 273 004c 00       		.byte	0
+ 274 004d 11       		.uleb128 0x11
+ 275 004e 01       		.uleb128 0x1
+ 276 004f 31       		.uleb128 0x31
+ 277 0050 13       		.uleb128 0x13
+ 278 0051 00       		.byte	0
+ 279 0052 00       		.byte	0
+ 280 0053 06       		.uleb128 0x6
+ 281 0054 898201   		.uleb128 0x4109
+ 282 0057 01       		.byte	0x1
+ 283 0058 11       		.uleb128 0x11
+ 284 0059 01       		.uleb128 0x1
+ 285 005a 31       		.uleb128 0x31
+ 286 005b 13       		.uleb128 0x13
+ 287 005c 01       		.uleb128 0x1
+ 288 005d 13       		.uleb128 0x13
+ 289 005e 00       		.byte	0
+ 290 005f 00       		.byte	0
+ 291 0060 07       		.uleb128 0x7
+ 292 0061 8A8201   		.uleb128 0x410a
+ 293 0064 00       		.byte	0
+ 294 0065 02       		.uleb128 0x2
+ 295 0066 18       		.uleb128 0x18
+ 296 0067 9142     		.uleb128 0x2111
+ 297 0069 18       		.uleb128 0x18
+ 298 006a 00       		.byte	0
+ 299 006b 00       		.byte	0
+ 300 006c 08       		.uleb128 0x8
+ 301 006d 2E       		.uleb128 0x2e
+ 302 006e 00       		.byte	0
+ 303 006f 3F       		.uleb128 0x3f
+ 304 0070 19       		.uleb128 0x19
+ 305 0071 3C       		.uleb128 0x3c
+ 306 0072 19       		.uleb128 0x19
+ 307 0073 6E       		.uleb128 0x6e
+ 308 0074 0E       		.uleb128 0xe
+ 309 0075 03       		.uleb128 0x3
+ 310 0076 0E       		.uleb128 0xe
+ 311 0077 3A       		.uleb128 0x3a
+ 312 0078 0B       		.uleb128 0xb
+ 313 0079 3B       		.uleb128 0x3b
+ 314 007a 0B       		.uleb128 0xb
+ 315 007b 00       		.byte	0
+ 316 007c 00       		.byte	0
+ 317 007d 00       		.byte	0
+ 318              		.section	.debug_aranges,"",%progbits
+ 319 0000 1C000000 		.4byte	0x1c
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccaPuui0.s 			page 7
+
+
+ 320 0004 0200     		.2byte	0x2
+ 321 0006 00000000 		.4byte	.Ldebug_info0
+ 322 000a 04       		.byte	0x4
+ 323 000b 00       		.byte	0
+ 324 000c 0000     		.2byte	0
+ 325 000e 0000     		.2byte	0
+ 326 0010 00000000 		.4byte	.LFB32
+ 327 0014 20000000 		.4byte	.LFE32-.LFB32
+ 328 0018 00000000 		.4byte	0
+ 329 001c 00000000 		.4byte	0
+ 330              		.section	.debug_ranges,"",%progbits
+ 331              	.Ldebug_ranges0:
+ 332 0000 00000000 		.4byte	.LFB32
+ 333 0004 20000000 		.4byte	.LFE32
+ 334 0008 00000000 		.4byte	0
+ 335 000c 00000000 		.4byte	0
+ 336              		.section	.debug_line,"",%progbits
+ 337              	.Ldebug_line0:
+ 338 0000 77000000 		.section	.debug_str,"MS",%progbits,1
+ 338      02005600 
+ 338      00000201 
+ 338      FB0E0D00 
+ 338      01010101 
+ 339              	.LASF6:
+ 340 0000 6C6F6E67 		.ascii	"long long int\000"
+ 340      206C6F6E 
+ 340      6720696E 
+ 340      7400
+ 341              	.LASF8:
+ 342 000e 756E7369 		.ascii	"unsigned int\000"
+ 342      676E6564 
+ 342      20696E74 
+ 342      00
+ 343              	.LASF19:
+ 344 001b 6D61696E 		.ascii	"main.c\000"
+ 344      2E6300
+ 345              	.LASF21:
+ 346 0022 6D61696E 		.ascii	"main\000"
+ 346      00
+ 347              	.LASF14:
+ 348 0027 4C43445F 		.ascii	"LCD_Char_1_Start\000"
+ 348      43686172 
+ 348      5F315F53 
+ 348      74617274 
+ 348      00
+ 349              	.LASF17:
+ 350 0038 4C43445F 		.ascii	"LCD_Char_1_PrintInt8\000"
+ 350      43686172 
+ 350      5F315F50 
+ 350      72696E74 
+ 350      496E7438 
+ 351              	.LASF7:
+ 352 004d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 352      206C6F6E 
+ 352      6720756E 
+ 352      7369676E 
+ 352      65642069 
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccaPuui0.s 			page 8
+
+
+ 353              	.LASF9:
+ 354 0064 666C6F61 		.ascii	"float\000"
+ 354      7400
+ 355              	.LASF1:
+ 356 006a 756E7369 		.ascii	"unsigned char\000"
+ 356      676E6564 
+ 356      20636861 
+ 356      7200
+ 357              	.LASF15:
+ 358 0078 4C43445F 		.ascii	"LCD_Char_1_Position\000"
+ 358      43686172 
+ 358      5F315F50 
+ 358      6F736974 
+ 358      696F6E00 
+ 359              	.LASF11:
+ 360 008c 63686172 		.ascii	"char\000"
+ 360      00
+ 361              	.LASF4:
+ 362 0091 6C6F6E67 		.ascii	"long int\000"
+ 362      20696E74 
+ 362      00
+ 363              	.LASF5:
+ 364 009a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 364      20756E73 
+ 364      69676E65 
+ 364      6420696E 
+ 364      7400
+ 365              	.LASF10:
+ 366 00ac 646F7562 		.ascii	"double\000"
+ 366      6C6500
+ 367              	.LASF20:
+ 368 00b3 433A5C55 		.ascii	"C:\\Users\\MIHAILO\\Documents\\PSoC Creator\\PSoC10"
+ 368      73657273 
+ 368      5C4D4948 
+ 368      41494C4F 
+ 368      5C446F63 
+ 369 00e1 315C4C61 		.ascii	"1\\Lab08.cydsn\000"
+ 369      6230382E 
+ 369      63796473 
+ 369      6E00
+ 370              	.LASF18:
+ 371 00ef 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 371      43313120 
+ 371      352E342E 
+ 371      31203230 
+ 371      31363036 
+ 372 0122 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 372      20726576 
+ 372      6973696F 
+ 372      6E203233 
+ 372      37373135 
+ 373 0155 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 373      66756E63 
+ 373      74696F6E 
+ 373      2D736563 
+ 373      74696F6E 
+ 374              	.LASF3:
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\ccaPuui0.s 			page 9
+
+
+ 375 017d 73686F72 		.ascii	"short unsigned int\000"
+ 375      7420756E 
+ 375      7369676E 
+ 375      65642069 
+ 375      6E7400
+ 376              	.LASF0:
+ 377 0190 7369676E 		.ascii	"signed char\000"
+ 377      65642063 
+ 377      68617200 
+ 378              	.LASF16:
+ 379 019c 53746174 		.ascii	"Status_Reg_1_Read\000"
+ 379      75735F52 
+ 379      65675F31 
+ 379      5F526561 
+ 379      6400
+ 380              	.LASF12:
+ 381 01ae 6C6F6E67 		.ascii	"long double\000"
+ 381      20646F75 
+ 381      626C6500 
+ 382              	.LASF2:
+ 383 01ba 73686F72 		.ascii	"short int\000"
+ 383      7420696E 
+ 383      7400
+ 384              	.LASF13:
+ 385 01c4 73697A65 		.ascii	"sizetype\000"
+ 385      74797065 
+ 385      00
+ 386              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

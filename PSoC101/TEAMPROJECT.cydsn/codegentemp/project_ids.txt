@@ -1,0 +1,18 @@
+C:\Users\MIHAILO\Documents\PSoC Creator\PSoC101\Lab01.cydsn\Lab01.cyprj|8c335cc0-f34c-426f-ac03-652a619328c1
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|f58ed91b-bd11-457d-8f63-fbdb803dcee9
+C:\Users\MIHAILO\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|880c00be-8921-4e06-9d24-4411e2d35568
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|8ed1c3e5-b2c0-4a2d-9aaa-65dc231acf81
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|aa3687f2-0445-46c0-aab4-d4eb97c687f3
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|4142cbe5-1f67-40c5-bc0e-2cbb38c7e797
+C:\Users\MIHAILO\Documents\PSoC Creator\PSoC101\Lab02.cydsn\Lab02.cyprj|a9788e04-2eb3-4faf-b3fd-c5cda8b79004
+C:\Users\MIHAILO\Documents\PSoC Creator\PSoC101\Lab03.cydsn\Lab03.cyprj|803c612e-931e-4a91-af04-8cdae9aa9963
+C:\Users\MIHAILO\Documents\PSoC Creator\PSoC101\Lab04.cydsn\Lab04.cyprj|d46d4c4a-ad90-48ac-9828-ea6a6a58b824
+C:\Users\MIHAILO\Documents\PSoC Creator\PSoC101\Lab05.cydsn\Lab05.cyprj|29a580fd-8598-4c3d-a051-086c8c6fa4a8
+C:\Users\MIHAILO\Documents\PSoC Creator\PSoC101\Lab06.cydsn\Lab06.cyprj|2626a69c-fd9e-434e-b505-0638b02f8f90
+C:\Users\MIHAILO\Documents\PSoC Creator\PSoC101\Lab07.cydsn\Lab07.cyprj|4cbd68ff-2677-450d-920f-dd7f4c411596
+C:\Users\MIHAILO\Documents\PSoC Creator\PSoC101\Lab08.cydsn\Lab08.cyprj|08baaa62-edc7-4ee6-a4bd-7d0bca1d59ae
+C:\Users\MIHAILO\Documents\PSoC Creator\PSoC101\Lab09.cydsn\Lab09.cyprj|57ce425d-c82c-44e9-a13b-c5d8372c4b34
+C:\Users\MIHAILO\Documents\PSoC Creator\PSoC101\Lab.9.2.cydsn\Lab.9.2.cyprj|2a6a1df1-6535-468a-aaf3-1500f791d0c4
+C:\Users\MIHAILO\Documents\PSoC Creator\PSoC101\EZI2C_Slave_SCB01.cydsn\EZI2C_Slave_SCB01.cyprj|3255aca9-a082-4b6e-918c-5302b4c11d65
+C:\Users\MIHAILO\Documents\PSoC Creator\PSoC101\Lab010.cydsn\Lab010.cyprj|802e30fb-af4b-4bc4-9111-7c0b36f22c65
+C:\Users\MIHAILO\Documents\PSoC Creator\PSoC101\TEAMPROJECT.cydsn\TEAMPROJECT.cyprj|a8dc8306-b618-400e-a8ba-5f46835e49ca

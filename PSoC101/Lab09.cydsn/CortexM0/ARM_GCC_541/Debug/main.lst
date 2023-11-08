@@ -1,0 +1,870 @@
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cc1WpLqk.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB32:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** #define POT_CHAN (0)
+  14:main.c        **** #define WRITABLE (0)
+  15:main.c        **** int main(void)
+  16:main.c        **** {
+  28              		.loc 1 16 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 30B5     		push	{r4, r5, lr}
+  33              		.cfi_def_cfa_offset 12
+  34              		.cfi_offset 4, -12
+  35              		.cfi_offset 5, -8
+  36              		.cfi_offset 14, -4
+  37 0002 83B0     		sub	sp, sp, #12
+  38              		.cfi_def_cfa_offset 24
+  39              	.LVL0:
+  17:main.c        ****     int16 counts=0;
+  18:main.c        ****     int16 mVolts=0;
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cc1WpLqk.s 			page 2
+
+
+  19:main.c        ****     uint8 i2cReg[2];
+  20:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  40              		.loc 1 20 0
+  41              		.syntax divided
+  42              	@ 20 "main.c" 1
+  43 0004 62B6     		CPSIE   i
+  44              	@ 0 "" 2
+  21:main.c        **** 
+  22:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  23:main.c        ****     ADC_Start();
+  45              		.loc 1 23 0
+  46              		.thumb
+  47              		.syntax unified
+  48 0006 FFF7FEFF 		bl	ADC_Start
+  49              	.LVL1:
+  24:main.c        ****     ADC_StartConvert();
+  50              		.loc 1 24 0
+  51 000a FFF7FEFF 		bl	ADC_StartConvert
+  52              	.LVL2:
+  25:main.c        ****     LCD_Start();
+  53              		.loc 1 25 0
+  54 000e FFF7FEFF 		bl	LCD_Start
+  55              	.LVL3:
+  26:main.c        ****     EZI2C_Start();
+  56              		.loc 1 26 0
+  57 0012 FFF7FEFF 		bl	EZI2C_Start
+  58              	.LVL4:
+  27:main.c        ****     EZI2C_EzI2CSetBuffer1(sizeof(i2cReg),WRITABLE,i2cReg);
+  59              		.loc 1 27 0
+  60 0016 01AA     		add	r2, sp, #4
+  61 0018 0021     		movs	r1, #0
+  62 001a 0220     		movs	r0, #2
+  63 001c FFF7FEFF 		bl	EZI2C_EzI2CSetBuffer1
+  64              	.LVL5:
+  65              	.L2:
+  28:main.c        ****     for(;;)
+  29:main.c        ****     {
+  30:main.c        ****         /* Place your application code here. */
+  31:main.c        ****         counts= ADC_GetResult16(POT_CHAN);
+  66              		.loc 1 31 0 discriminator 1
+  67 0020 0020     		movs	r0, #0
+  68 0022 FFF7FEFF 		bl	ADC_GetResult16
+  69              	.LVL6:
+  70 0026 0100     		movs	r1, r0
+  71              	.LVL7:
+  32:main.c        ****         mVolts= ADC_CountsTo_mVolts(POT_CHAN,counts);
+  72              		.loc 1 32 0 discriminator 1
+  73 0028 0020     		movs	r0, #0
+  74 002a FFF7FEFF 		bl	ADC_CountsTo_mVolts
+  75              	.LVL8:
+  76 002e 0500     		movs	r5, r0
+  77              	.LVL9:
+  33:main.c        ****         LCD_Position(0,0);
+  78              		.loc 1 33 0 discriminator 1
+  79 0030 0021     		movs	r1, #0
+  80 0032 0020     		movs	r0, #0
+  81 0034 FFF7FEFF 		bl	LCD_Position
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cc1WpLqk.s 			page 3
+
+
+  82              	.LVL10:
+  34:main.c        ****         LCD_PrintNumber(mVolts);
+  83              		.loc 1 34 0 discriminator 1
+  84 0038 ACB2     		uxth	r4, r5
+  85 003a 2000     		movs	r0, r4
+  86 003c FFF7FEFF 		bl	LCD_PrintU32Number
+  87              	.LVL11:
+  35:main.c        ****         LCD_PrintString("mV   ");
+  88              		.loc 1 35 0 discriminator 1
+  89 0040 0348     		ldr	r0, .L3
+  90 0042 FFF7FEFF 		bl	LCD_PrintString
+  91              	.LVL12:
+  36:main.c        ****         i2cReg[0]=HI8(mVolts);
+  92              		.loc 1 36 0 discriminator 1
+  93 0046 240A     		lsrs	r4, r4, #8
+  94 0048 01AB     		add	r3, sp, #4
+  95 004a 1C70     		strb	r4, [r3]
+  37:main.c        ****         i2cReg[1]=LO8(mVolts);
+  96              		.loc 1 37 0 discriminator 1
+  97 004c 5D70     		strb	r5, [r3, #1]
+  98 004e E7E7     		b	.L2
+  99              	.L4:
+ 100              		.align	2
+ 101              	.L3:
+ 102 0050 00000000 		.word	.LC0
+ 103              		.cfi_endproc
+ 104              	.LFE32:
+ 105              		.size	main, .-main
+ 106              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 107              		.align	2
+ 108              	.LC0:
+ 109 0000 6D562020 		.ascii	"mV   \000"
+ 109      2000
+ 110              		.text
+ 111              	.Letext0:
+ 112              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 113              		.file 3 "Generated_Source\\PSoC4/ADC.h"
+ 114              		.file 4 "Generated_Source\\PSoC4/LCD.h"
+ 115              		.file 5 "Generated_Source\\PSoC4/EZI2C.h"
+ 116              		.file 6 "Generated_Source\\PSoC4/EZI2C_EZI2C.h"
+ 117              		.section	.debug_info,"",%progbits
+ 118              	.Ldebug_info0:
+ 119 0000 1A020000 		.4byte	0x21a
+ 120 0004 0400     		.2byte	0x4
+ 121 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 122 000a 04       		.byte	0x4
+ 123 000b 01       		.uleb128 0x1
+ 124 000c 16010000 		.4byte	.LASF30
+ 125 0010 0C       		.byte	0xc
+ 126 0011 C5010000 		.4byte	.LASF31
+ 127 0015 DB010000 		.4byte	.LASF32
+ 128 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 129 001d 00000000 		.4byte	0
+ 130 0021 00000000 		.4byte	.Ldebug_line0
+ 131 0025 02       		.uleb128 0x2
+ 132 0026 01       		.byte	0x1
+ 133 0027 06       		.byte	0x6
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cc1WpLqk.s 			page 4
+
+
+ 134 0028 38020000 		.4byte	.LASF0
+ 135 002c 02       		.uleb128 0x2
+ 136 002d 01       		.byte	0x1
+ 137 002e 08       		.byte	0x8
+ 138 002f 4C000000 		.4byte	.LASF1
+ 139 0033 02       		.uleb128 0x2
+ 140 0034 02       		.byte	0x2
+ 141 0035 05       		.byte	0x5
+ 142 0036 D1010000 		.4byte	.LASF2
+ 143 003a 02       		.uleb128 0x2
+ 144 003b 02       		.byte	0x2
+ 145 003c 07       		.byte	0x7
+ 146 003d 29000000 		.4byte	.LASF3
+ 147 0041 02       		.uleb128 0x2
+ 148 0042 04       		.byte	0x4
+ 149 0043 05       		.byte	0x5
+ 150 0044 23020000 		.4byte	.LASF4
+ 151 0048 02       		.uleb128 0x2
+ 152 0049 04       		.byte	0x4
+ 153 004a 07       		.byte	0x7
+ 154 004b 60000000 		.4byte	.LASF5
+ 155 004f 02       		.uleb128 0x2
+ 156 0050 08       		.byte	0x8
+ 157 0051 05       		.byte	0x5
+ 158 0052 00000000 		.4byte	.LASF6
+ 159 0056 02       		.uleb128 0x2
+ 160 0057 08       		.byte	0x8
+ 161 0058 07       		.byte	0x7
+ 162 0059 BF000000 		.4byte	.LASF7
+ 163 005d 03       		.uleb128 0x3
+ 164 005e 04       		.byte	0x4
+ 165 005f 05       		.byte	0x5
+ 166 0060 696E7400 		.ascii	"int\000"
+ 167 0064 02       		.uleb128 0x2
+ 168 0065 04       		.byte	0x4
+ 169 0066 07       		.byte	0x7
+ 170 0067 AB000000 		.4byte	.LASF8
+ 171 006b 04       		.uleb128 0x4
+ 172 006c 72000000 		.4byte	.LASF9
+ 173 0070 02       		.byte	0x2
+ 174 0071 FB01     		.2byte	0x1fb
+ 175 0073 2C000000 		.4byte	0x2c
+ 176 0077 04       		.uleb128 0x4
+ 177 0078 A4000000 		.4byte	.LASF10
+ 178 007c 02       		.byte	0x2
+ 179 007d FC01     		.2byte	0x1fc
+ 180 007f 3A000000 		.4byte	0x3a
+ 181 0083 04       		.uleb128 0x4
+ 182 0084 5A000000 		.4byte	.LASF11
+ 183 0088 02       		.byte	0x2
+ 184 0089 FF01     		.2byte	0x1ff
+ 185 008b 33000000 		.4byte	0x33
+ 186 008f 02       		.uleb128 0x2
+ 187 0090 04       		.byte	0x4
+ 188 0091 04       		.byte	0x4
+ 189 0092 3C000000 		.4byte	.LASF12
+ 190 0096 02       		.uleb128 0x2
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cc1WpLqk.s 			page 5
+
+
+ 191 0097 08       		.byte	0x8
+ 192 0098 04       		.byte	0x4
+ 193 0099 88000000 		.4byte	.LASF13
+ 194 009d 02       		.uleb128 0x2
+ 195 009e 01       		.byte	0x1
+ 196 009f 08       		.byte	0x8
+ 197 00a0 CC010000 		.4byte	.LASF14
+ 198 00a4 02       		.uleb128 0x2
+ 199 00a5 08       		.byte	0x8
+ 200 00a6 04       		.byte	0x4
+ 201 00a7 2C020000 		.4byte	.LASF15
+ 202 00ab 02       		.uleb128 0x2
+ 203 00ac 04       		.byte	0x4
+ 204 00ad 07       		.byte	0x7
+ 205 00ae AB010000 		.4byte	.LASF16
+ 206 00b2 05       		.uleb128 0x5
+ 207 00b3 8F000000 		.4byte	.LASF33
+ 208 00b7 01       		.byte	0x1
+ 209 00b8 0F       		.byte	0xf
+ 210 00b9 5D000000 		.4byte	0x5d
+ 211 00bd 00000000 		.4byte	.LFB32
+ 212 00c1 54000000 		.4byte	.LFE32-.LFB32
+ 213 00c5 01       		.uleb128 0x1
+ 214 00c6 9C       		.byte	0x9c
+ 215 00c7 9F010000 		.4byte	0x19f
+ 216 00cb 06       		.uleb128 0x6
+ 217 00cc B8000000 		.4byte	.LASF17
+ 218 00d0 01       		.byte	0x1
+ 219 00d1 11       		.byte	0x11
+ 220 00d2 83000000 		.4byte	0x83
+ 221 00d6 00000000 		.4byte	.LLST0
+ 222 00da 06       		.uleb128 0x6
+ 223 00db A4010000 		.4byte	.LASF18
+ 224 00df 01       		.byte	0x1
+ 225 00e0 12       		.byte	0x12
+ 226 00e1 83000000 		.4byte	0x83
+ 227 00e5 1F000000 		.4byte	.LLST1
+ 228 00e9 07       		.uleb128 0x7
+ 229 00ea 0E000000 		.4byte	.LASF19
+ 230 00ee 01       		.byte	0x1
+ 231 00ef 13       		.byte	0x13
+ 232 00f0 9F010000 		.4byte	0x19f
+ 233 00f4 02       		.uleb128 0x2
+ 234 00f5 91       		.byte	0x91
+ 235 00f6 6C       		.sleb128 -20
+ 236 00f7 08       		.uleb128 0x8
+ 237 00f8 0A000000 		.4byte	.LVL1
+ 238 00fc AF010000 		.4byte	0x1af
+ 239 0100 08       		.uleb128 0x8
+ 240 0101 0E000000 		.4byte	.LVL2
+ 241 0105 BA010000 		.4byte	0x1ba
+ 242 0109 08       		.uleb128 0x8
+ 243 010a 12000000 		.4byte	.LVL3
+ 244 010e C5010000 		.4byte	0x1c5
+ 245 0112 08       		.uleb128 0x8
+ 246 0113 16000000 		.4byte	.LVL4
+ 247 0117 D0010000 		.4byte	0x1d0
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cc1WpLqk.s 			page 6
+
+
+ 248 011b 09       		.uleb128 0x9
+ 249 011c 20000000 		.4byte	.LVL5
+ 250 0120 DB010000 		.4byte	0x1db
+ 251 0124 39010000 		.4byte	0x139
+ 252 0128 0A       		.uleb128 0xa
+ 253 0129 01       		.uleb128 0x1
+ 254 012a 50       		.byte	0x50
+ 255 012b 01       		.uleb128 0x1
+ 256 012c 32       		.byte	0x32
+ 257 012d 0A       		.uleb128 0xa
+ 258 012e 01       		.uleb128 0x1
+ 259 012f 51       		.byte	0x51
+ 260 0130 01       		.uleb128 0x1
+ 261 0131 30       		.byte	0x30
+ 262 0132 0A       		.uleb128 0xa
+ 263 0133 01       		.uleb128 0x1
+ 264 0134 52       		.byte	0x52
+ 265 0135 02       		.uleb128 0x2
+ 266 0136 91       		.byte	0x91
+ 267 0137 6C       		.sleb128 -20
+ 268 0138 00       		.byte	0
+ 269 0139 09       		.uleb128 0x9
+ 270 013a 26000000 		.4byte	.LVL6
+ 271 013e E6010000 		.4byte	0x1e6
+ 272 0142 4C010000 		.4byte	0x14c
+ 273 0146 0A       		.uleb128 0xa
+ 274 0147 01       		.uleb128 0x1
+ 275 0148 50       		.byte	0x50
+ 276 0149 01       		.uleb128 0x1
+ 277 014a 30       		.byte	0x30
+ 278 014b 00       		.byte	0
+ 279 014c 09       		.uleb128 0x9
+ 280 014d 2E000000 		.4byte	.LVL8
+ 281 0151 F1010000 		.4byte	0x1f1
+ 282 0155 5F010000 		.4byte	0x15f
+ 283 0159 0A       		.uleb128 0xa
+ 284 015a 01       		.uleb128 0x1
+ 285 015b 50       		.byte	0x50
+ 286 015c 01       		.uleb128 0x1
+ 287 015d 30       		.byte	0x30
+ 288 015e 00       		.byte	0
+ 289 015f 09       		.uleb128 0x9
+ 290 0160 38000000 		.4byte	.LVL10
+ 291 0164 FC010000 		.4byte	0x1fc
+ 292 0168 77010000 		.4byte	0x177
+ 293 016c 0A       		.uleb128 0xa
+ 294 016d 01       		.uleb128 0x1
+ 295 016e 50       		.byte	0x50
+ 296 016f 01       		.uleb128 0x1
+ 297 0170 30       		.byte	0x30
+ 298 0171 0A       		.uleb128 0xa
+ 299 0172 01       		.uleb128 0x1
+ 300 0173 51       		.byte	0x51
+ 301 0174 01       		.uleb128 0x1
+ 302 0175 30       		.byte	0x30
+ 303 0176 00       		.byte	0
+ 304 0177 09       		.uleb128 0x9
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cc1WpLqk.s 			page 7
+
+
+ 305 0178 40000000 		.4byte	.LVL11
+ 306 017c 07020000 		.4byte	0x207
+ 307 0180 8B010000 		.4byte	0x18b
+ 308 0184 0A       		.uleb128 0xa
+ 309 0185 01       		.uleb128 0x1
+ 310 0186 50       		.byte	0x50
+ 311 0187 02       		.uleb128 0x2
+ 312 0188 74       		.byte	0x74
+ 313 0189 00       		.sleb128 0
+ 314 018a 00       		.byte	0
+ 315 018b 0B       		.uleb128 0xb
+ 316 018c 46000000 		.4byte	.LVL12
+ 317 0190 12020000 		.4byte	0x212
+ 318 0194 0A       		.uleb128 0xa
+ 319 0195 01       		.uleb128 0x1
+ 320 0196 50       		.byte	0x50
+ 321 0197 05       		.uleb128 0x5
+ 322 0198 03       		.byte	0x3
+ 323 0199 00000000 		.4byte	.LC0
+ 324 019d 00       		.byte	0
+ 325 019e 00       		.byte	0
+ 326 019f 0C       		.uleb128 0xc
+ 327 01a0 6B000000 		.4byte	0x6b
+ 328 01a4 AF010000 		.4byte	0x1af
+ 329 01a8 0D       		.uleb128 0xd
+ 330 01a9 AB000000 		.4byte	0xab
+ 331 01ad 01       		.byte	0x1
+ 332 01ae 00       		.byte	0
+ 333 01af 0E       		.uleb128 0xe
+ 334 01b0 0C010000 		.4byte	.LASF20
+ 335 01b4 0C010000 		.4byte	.LASF20
+ 336 01b8 03       		.byte	0x3
+ 337 01b9 99       		.byte	0x99
+ 338 01ba 0E       		.uleb128 0xe
+ 339 01bb B4010000 		.4byte	.LASF21
+ 340 01bf B4010000 		.4byte	.LASF21
+ 341 01c3 03       		.byte	0x3
+ 342 01c4 9D       		.byte	0x9d
+ 343 01c5 0E       		.uleb128 0xe
+ 344 01c6 42000000 		.4byte	.LASF22
+ 345 01ca 42000000 		.4byte	.LASF22
+ 346 01ce 04       		.byte	0x4
+ 347 01cf 38       		.byte	0x38
+ 348 01d0 0E       		.uleb128 0xe
+ 349 01d1 17020000 		.4byte	.LASF23
+ 350 01d5 17020000 		.4byte	.LASF23
+ 351 01d9 05       		.byte	0x5
+ 352 01da 72       		.byte	0x72
+ 353 01db 0E       		.uleb128 0xe
+ 354 01dc D6000000 		.4byte	.LASF24
+ 355 01e0 D6000000 		.4byte	.LASF24
+ 356 01e4 06       		.byte	0x6
+ 357 01e5 A2       		.byte	0xa2
+ 358 01e6 0E       		.uleb128 0xe
+ 359 01e7 78000000 		.4byte	.LASF25
+ 360 01eb 78000000 		.4byte	.LASF25
+ 361 01ef 03       		.byte	0x3
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cc1WpLqk.s 			page 8
+
+
+ 362 01f0 A0       		.byte	0xa0
+ 363 01f1 0E       		.uleb128 0xe
+ 364 01f2 15000000 		.4byte	.LASF26
+ 365 01f6 15000000 		.4byte	.LASF26
+ 366 01fa 03       		.byte	0x3
+ 367 01fb AC       		.byte	0xac
+ 368 01fc 0E       		.uleb128 0xe
+ 369 01fd EC000000 		.4byte	.LASF27
+ 370 0201 EC000000 		.4byte	.LASF27
+ 371 0205 04       		.byte	0x4
+ 372 0206 3D       		.byte	0x3d
+ 373 0207 0E       		.uleb128 0xe
+ 374 0208 F9000000 		.4byte	.LASF28
+ 375 020c F9000000 		.4byte	.LASF28
+ 376 0210 04       		.byte	0x4
+ 377 0211 61       		.byte	0x61
+ 378 0212 0E       		.uleb128 0xe
+ 379 0213 94000000 		.4byte	.LASF29
+ 380 0217 94000000 		.4byte	.LASF29
+ 381 021b 04       		.byte	0x4
+ 382 021c 3C       		.byte	0x3c
+ 383 021d 00       		.byte	0
+ 384              		.section	.debug_abbrev,"",%progbits
+ 385              	.Ldebug_abbrev0:
+ 386 0000 01       		.uleb128 0x1
+ 387 0001 11       		.uleb128 0x11
+ 388 0002 01       		.byte	0x1
+ 389 0003 25       		.uleb128 0x25
+ 390 0004 0E       		.uleb128 0xe
+ 391 0005 13       		.uleb128 0x13
+ 392 0006 0B       		.uleb128 0xb
+ 393 0007 03       		.uleb128 0x3
+ 394 0008 0E       		.uleb128 0xe
+ 395 0009 1B       		.uleb128 0x1b
+ 396 000a 0E       		.uleb128 0xe
+ 397 000b 55       		.uleb128 0x55
+ 398 000c 17       		.uleb128 0x17
+ 399 000d 11       		.uleb128 0x11
+ 400 000e 01       		.uleb128 0x1
+ 401 000f 10       		.uleb128 0x10
+ 402 0010 17       		.uleb128 0x17
+ 403 0011 00       		.byte	0
+ 404 0012 00       		.byte	0
+ 405 0013 02       		.uleb128 0x2
+ 406 0014 24       		.uleb128 0x24
+ 407 0015 00       		.byte	0
+ 408 0016 0B       		.uleb128 0xb
+ 409 0017 0B       		.uleb128 0xb
+ 410 0018 3E       		.uleb128 0x3e
+ 411 0019 0B       		.uleb128 0xb
+ 412 001a 03       		.uleb128 0x3
+ 413 001b 0E       		.uleb128 0xe
+ 414 001c 00       		.byte	0
+ 415 001d 00       		.byte	0
+ 416 001e 03       		.uleb128 0x3
+ 417 001f 24       		.uleb128 0x24
+ 418 0020 00       		.byte	0
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cc1WpLqk.s 			page 9
+
+
+ 419 0021 0B       		.uleb128 0xb
+ 420 0022 0B       		.uleb128 0xb
+ 421 0023 3E       		.uleb128 0x3e
+ 422 0024 0B       		.uleb128 0xb
+ 423 0025 03       		.uleb128 0x3
+ 424 0026 08       		.uleb128 0x8
+ 425 0027 00       		.byte	0
+ 426 0028 00       		.byte	0
+ 427 0029 04       		.uleb128 0x4
+ 428 002a 16       		.uleb128 0x16
+ 429 002b 00       		.byte	0
+ 430 002c 03       		.uleb128 0x3
+ 431 002d 0E       		.uleb128 0xe
+ 432 002e 3A       		.uleb128 0x3a
+ 433 002f 0B       		.uleb128 0xb
+ 434 0030 3B       		.uleb128 0x3b
+ 435 0031 05       		.uleb128 0x5
+ 436 0032 49       		.uleb128 0x49
+ 437 0033 13       		.uleb128 0x13
+ 438 0034 00       		.byte	0
+ 439 0035 00       		.byte	0
+ 440 0036 05       		.uleb128 0x5
+ 441 0037 2E       		.uleb128 0x2e
+ 442 0038 01       		.byte	0x1
+ 443 0039 3F       		.uleb128 0x3f
+ 444 003a 19       		.uleb128 0x19
+ 445 003b 03       		.uleb128 0x3
+ 446 003c 0E       		.uleb128 0xe
+ 447 003d 3A       		.uleb128 0x3a
+ 448 003e 0B       		.uleb128 0xb
+ 449 003f 3B       		.uleb128 0x3b
+ 450 0040 0B       		.uleb128 0xb
+ 451 0041 27       		.uleb128 0x27
+ 452 0042 19       		.uleb128 0x19
+ 453 0043 49       		.uleb128 0x49
+ 454 0044 13       		.uleb128 0x13
+ 455 0045 8701     		.uleb128 0x87
+ 456 0047 19       		.uleb128 0x19
+ 457 0048 11       		.uleb128 0x11
+ 458 0049 01       		.uleb128 0x1
+ 459 004a 12       		.uleb128 0x12
+ 460 004b 06       		.uleb128 0x6
+ 461 004c 40       		.uleb128 0x40
+ 462 004d 18       		.uleb128 0x18
+ 463 004e 9742     		.uleb128 0x2117
+ 464 0050 19       		.uleb128 0x19
+ 465 0051 01       		.uleb128 0x1
+ 466 0052 13       		.uleb128 0x13
+ 467 0053 00       		.byte	0
+ 468 0054 00       		.byte	0
+ 469 0055 06       		.uleb128 0x6
+ 470 0056 34       		.uleb128 0x34
+ 471 0057 00       		.byte	0
+ 472 0058 03       		.uleb128 0x3
+ 473 0059 0E       		.uleb128 0xe
+ 474 005a 3A       		.uleb128 0x3a
+ 475 005b 0B       		.uleb128 0xb
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cc1WpLqk.s 			page 10
+
+
+ 476 005c 3B       		.uleb128 0x3b
+ 477 005d 0B       		.uleb128 0xb
+ 478 005e 49       		.uleb128 0x49
+ 479 005f 13       		.uleb128 0x13
+ 480 0060 02       		.uleb128 0x2
+ 481 0061 17       		.uleb128 0x17
+ 482 0062 00       		.byte	0
+ 483 0063 00       		.byte	0
+ 484 0064 07       		.uleb128 0x7
+ 485 0065 34       		.uleb128 0x34
+ 486 0066 00       		.byte	0
+ 487 0067 03       		.uleb128 0x3
+ 488 0068 0E       		.uleb128 0xe
+ 489 0069 3A       		.uleb128 0x3a
+ 490 006a 0B       		.uleb128 0xb
+ 491 006b 3B       		.uleb128 0x3b
+ 492 006c 0B       		.uleb128 0xb
+ 493 006d 49       		.uleb128 0x49
+ 494 006e 13       		.uleb128 0x13
+ 495 006f 02       		.uleb128 0x2
+ 496 0070 18       		.uleb128 0x18
+ 497 0071 00       		.byte	0
+ 498 0072 00       		.byte	0
+ 499 0073 08       		.uleb128 0x8
+ 500 0074 898201   		.uleb128 0x4109
+ 501 0077 00       		.byte	0
+ 502 0078 11       		.uleb128 0x11
+ 503 0079 01       		.uleb128 0x1
+ 504 007a 31       		.uleb128 0x31
+ 505 007b 13       		.uleb128 0x13
+ 506 007c 00       		.byte	0
+ 507 007d 00       		.byte	0
+ 508 007e 09       		.uleb128 0x9
+ 509 007f 898201   		.uleb128 0x4109
+ 510 0082 01       		.byte	0x1
+ 511 0083 11       		.uleb128 0x11
+ 512 0084 01       		.uleb128 0x1
+ 513 0085 31       		.uleb128 0x31
+ 514 0086 13       		.uleb128 0x13
+ 515 0087 01       		.uleb128 0x1
+ 516 0088 13       		.uleb128 0x13
+ 517 0089 00       		.byte	0
+ 518 008a 00       		.byte	0
+ 519 008b 0A       		.uleb128 0xa
+ 520 008c 8A8201   		.uleb128 0x410a
+ 521 008f 00       		.byte	0
+ 522 0090 02       		.uleb128 0x2
+ 523 0091 18       		.uleb128 0x18
+ 524 0092 9142     		.uleb128 0x2111
+ 525 0094 18       		.uleb128 0x18
+ 526 0095 00       		.byte	0
+ 527 0096 00       		.byte	0
+ 528 0097 0B       		.uleb128 0xb
+ 529 0098 898201   		.uleb128 0x4109
+ 530 009b 01       		.byte	0x1
+ 531 009c 11       		.uleb128 0x11
+ 532 009d 01       		.uleb128 0x1
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cc1WpLqk.s 			page 11
+
+
+ 533 009e 31       		.uleb128 0x31
+ 534 009f 13       		.uleb128 0x13
+ 535 00a0 00       		.byte	0
+ 536 00a1 00       		.byte	0
+ 537 00a2 0C       		.uleb128 0xc
+ 538 00a3 01       		.uleb128 0x1
+ 539 00a4 01       		.byte	0x1
+ 540 00a5 49       		.uleb128 0x49
+ 541 00a6 13       		.uleb128 0x13
+ 542 00a7 01       		.uleb128 0x1
+ 543 00a8 13       		.uleb128 0x13
+ 544 00a9 00       		.byte	0
+ 545 00aa 00       		.byte	0
+ 546 00ab 0D       		.uleb128 0xd
+ 547 00ac 21       		.uleb128 0x21
+ 548 00ad 00       		.byte	0
+ 549 00ae 49       		.uleb128 0x49
+ 550 00af 13       		.uleb128 0x13
+ 551 00b0 2F       		.uleb128 0x2f
+ 552 00b1 0B       		.uleb128 0xb
+ 553 00b2 00       		.byte	0
+ 554 00b3 00       		.byte	0
+ 555 00b4 0E       		.uleb128 0xe
+ 556 00b5 2E       		.uleb128 0x2e
+ 557 00b6 00       		.byte	0
+ 558 00b7 3F       		.uleb128 0x3f
+ 559 00b8 19       		.uleb128 0x19
+ 560 00b9 3C       		.uleb128 0x3c
+ 561 00ba 19       		.uleb128 0x19
+ 562 00bb 6E       		.uleb128 0x6e
+ 563 00bc 0E       		.uleb128 0xe
+ 564 00bd 03       		.uleb128 0x3
+ 565 00be 0E       		.uleb128 0xe
+ 566 00bf 3A       		.uleb128 0x3a
+ 567 00c0 0B       		.uleb128 0xb
+ 568 00c1 3B       		.uleb128 0x3b
+ 569 00c2 0B       		.uleb128 0xb
+ 570 00c3 00       		.byte	0
+ 571 00c4 00       		.byte	0
+ 572 00c5 00       		.byte	0
+ 573              		.section	.debug_loc,"",%progbits
+ 574              	.Ldebug_loc0:
+ 575              	.LLST0:
+ 576 0000 04000000 		.4byte	.LVL0
+ 577 0004 20000000 		.4byte	.LVL5
+ 578 0008 0200     		.2byte	0x2
+ 579 000a 30       		.byte	0x30
+ 580 000b 9F       		.byte	0x9f
+ 581 000c 28000000 		.4byte	.LVL7
+ 582 0010 2D000000 		.4byte	.LVL8-1
+ 583 0014 0100     		.2byte	0x1
+ 584 0016 51       		.byte	0x51
+ 585 0017 00000000 		.4byte	0
+ 586 001b 00000000 		.4byte	0
+ 587              	.LLST1:
+ 588 001f 04000000 		.4byte	.LVL0
+ 589 0023 20000000 		.4byte	.LVL5
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cc1WpLqk.s 			page 12
+
+
+ 590 0027 0200     		.2byte	0x2
+ 591 0029 30       		.byte	0x30
+ 592 002a 9F       		.byte	0x9f
+ 593 002b 30000000 		.4byte	.LVL9
+ 594 002f 54000000 		.4byte	.LFE32
+ 595 0033 0100     		.2byte	0x1
+ 596 0035 55       		.byte	0x55
+ 597 0036 00000000 		.4byte	0
+ 598 003a 00000000 		.4byte	0
+ 599              		.section	.debug_aranges,"",%progbits
+ 600 0000 1C000000 		.4byte	0x1c
+ 601 0004 0200     		.2byte	0x2
+ 602 0006 00000000 		.4byte	.Ldebug_info0
+ 603 000a 04       		.byte	0x4
+ 604 000b 00       		.byte	0
+ 605 000c 0000     		.2byte	0
+ 606 000e 0000     		.2byte	0
+ 607 0010 00000000 		.4byte	.LFB32
+ 608 0014 54000000 		.4byte	.LFE32-.LFB32
+ 609 0018 00000000 		.4byte	0
+ 610 001c 00000000 		.4byte	0
+ 611              		.section	.debug_ranges,"",%progbits
+ 612              	.Ldebug_ranges0:
+ 613 0000 00000000 		.4byte	.LFB32
+ 614 0004 54000000 		.4byte	.LFE32
+ 615 0008 00000000 		.4byte	0
+ 616 000c 00000000 		.4byte	0
+ 617              		.section	.debug_line,"",%progbits
+ 618              	.Ldebug_line0:
+ 619 0000 AD000000 		.section	.debug_str,"MS",%progbits,1
+ 619      02006F00 
+ 619      00000201 
+ 619      FB0E0D00 
+ 619      01010101 
+ 620              	.LASF6:
+ 621 0000 6C6F6E67 		.ascii	"long long int\000"
+ 621      206C6F6E 
+ 621      6720696E 
+ 621      7400
+ 622              	.LASF19:
+ 623 000e 69326352 		.ascii	"i2cReg\000"
+ 623      656700
+ 624              	.LASF26:
+ 625 0015 4144435F 		.ascii	"ADC_CountsTo_mVolts\000"
+ 625      436F756E 
+ 625      7473546F 
+ 625      5F6D566F 
+ 625      6C747300 
+ 626              	.LASF3:
+ 627 0029 73686F72 		.ascii	"short unsigned int\000"
+ 627      7420756E 
+ 627      7369676E 
+ 627      65642069 
+ 627      6E7400
+ 628              	.LASF12:
+ 629 003c 666C6F61 		.ascii	"float\000"
+ 629      7400
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cc1WpLqk.s 			page 13
+
+
+ 630              	.LASF22:
+ 631 0042 4C43445F 		.ascii	"LCD_Start\000"
+ 631      53746172 
+ 631      7400
+ 632              	.LASF1:
+ 633 004c 756E7369 		.ascii	"unsigned char\000"
+ 633      676E6564 
+ 633      20636861 
+ 633      7200
+ 634              	.LASF11:
+ 635 005a 696E7431 		.ascii	"int16\000"
+ 635      3600
+ 636              	.LASF5:
+ 637 0060 6C6F6E67 		.ascii	"long unsigned int\000"
+ 637      20756E73 
+ 637      69676E65 
+ 637      6420696E 
+ 637      7400
+ 638              	.LASF9:
+ 639 0072 75696E74 		.ascii	"uint8\000"
+ 639      3800
+ 640              	.LASF25:
+ 641 0078 4144435F 		.ascii	"ADC_GetResult16\000"
+ 641      47657452 
+ 641      6573756C 
+ 641      74313600 
+ 642              	.LASF13:
+ 643 0088 646F7562 		.ascii	"double\000"
+ 643      6C6500
+ 644              	.LASF33:
+ 645 008f 6D61696E 		.ascii	"main\000"
+ 645      00
+ 646              	.LASF29:
+ 647 0094 4C43445F 		.ascii	"LCD_PrintString\000"
+ 647      5072696E 
+ 647      74537472 
+ 647      696E6700 
+ 648              	.LASF10:
+ 649 00a4 75696E74 		.ascii	"uint16\000"
+ 649      313600
+ 650              	.LASF8:
+ 651 00ab 756E7369 		.ascii	"unsigned int\000"
+ 651      676E6564 
+ 651      20696E74 
+ 651      00
+ 652              	.LASF17:
+ 653 00b8 636F756E 		.ascii	"counts\000"
+ 653      747300
+ 654              	.LASF7:
+ 655 00bf 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 655      206C6F6E 
+ 655      6720756E 
+ 655      7369676E 
+ 655      65642069 
+ 656              	.LASF24:
+ 657 00d6 455A4932 		.ascii	"EZI2C_EzI2CSetBuffer1\000"
+ 657      435F457A 
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cc1WpLqk.s 			page 14
+
+
+ 657      49324353 
+ 657      65744275 
+ 657      66666572 
+ 658              	.LASF27:
+ 659 00ec 4C43445F 		.ascii	"LCD_Position\000"
+ 659      506F7369 
+ 659      74696F6E 
+ 659      00
+ 660              	.LASF28:
+ 661 00f9 4C43445F 		.ascii	"LCD_PrintU32Number\000"
+ 661      5072696E 
+ 661      74553332 
+ 661      4E756D62 
+ 661      657200
+ 662              	.LASF20:
+ 663 010c 4144435F 		.ascii	"ADC_Start\000"
+ 663      53746172 
+ 663      7400
+ 664              	.LASF30:
+ 665 0116 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 665      43313120 
+ 665      352E342E 
+ 665      31203230 
+ 665      31363036 
+ 666 0149 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 666      20726576 
+ 666      6973696F 
+ 666      6E203233 
+ 666      37373135 
+ 667 017c 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 667      66756E63 
+ 667      74696F6E 
+ 667      2D736563 
+ 667      74696F6E 
+ 668              	.LASF18:
+ 669 01a4 6D566F6C 		.ascii	"mVolts\000"
+ 669      747300
+ 670              	.LASF16:
+ 671 01ab 73697A65 		.ascii	"sizetype\000"
+ 671      74797065 
+ 671      00
+ 672              	.LASF21:
+ 673 01b4 4144435F 		.ascii	"ADC_StartConvert\000"
+ 673      53746172 
+ 673      74436F6E 
+ 673      76657274 
+ 673      00
+ 674              	.LASF31:
+ 675 01c5 6D61696E 		.ascii	"main.c\000"
+ 675      2E6300
+ 676              	.LASF14:
+ 677 01cc 63686172 		.ascii	"char\000"
+ 677      00
+ 678              	.LASF2:
+ 679 01d1 73686F72 		.ascii	"short int\000"
+ 679      7420696E 
+ 679      7400
+ARM GAS  C:\Users\MIHAILO\AppData\Local\Temp\cc1WpLqk.s 			page 15
+
+
+ 680              	.LASF32:
+ 681 01db 433A5C55 		.ascii	"C:\\Users\\MIHAILO\\Documents\\PSoC Creator\\PSoC10"
+ 681      73657273 
+ 681      5C4D4948 
+ 681      41494C4F 
+ 681      5C446F63 
+ 682 0209 315C4C61 		.ascii	"1\\Lab09.cydsn\000"
+ 682      6230392E 
+ 682      63796473 
+ 682      6E00
+ 683              	.LASF23:
+ 684 0217 455A4932 		.ascii	"EZI2C_Start\000"
+ 684      435F5374 
+ 684      61727400 
+ 685              	.LASF4:
+ 686 0223 6C6F6E67 		.ascii	"long int\000"
+ 686      20696E74 
+ 686      00
+ 687              	.LASF15:
+ 688 022c 6C6F6E67 		.ascii	"long double\000"
+ 688      20646F75 
+ 688      626C6500 
+ 689              	.LASF0:
+ 690 0238 7369676E 		.ascii	"signed char\000"
+ 690      65642063 
+ 690      68617200 
+ 691              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

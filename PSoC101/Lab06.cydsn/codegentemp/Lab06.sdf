@@ -1,0 +1,24 @@
+(DELAYFILE
+ (SDFVERSION "IEEE 1497 4.0")
+ (DATE "2023-11-02T11:04:14Z")
+ (DESIGN "Lab06")
+ (VENDOR "Cypress Semiconductor")
+ (PROGRAM "PSoC Creator")
+ (VERSION " 4.4")
+ (DIVIDER .)
+ (TIMESCALE 1 ns)
+ (CELL
+  (CELLTYPE "Lab06")
+  (INSTANCE *)
+  (DELAY
+   (ABSOLUTE
+    (INTERCONNECT Net_11.q PSOC_Pin\(0\).pin_input (5.683:5.683:5.683))
+    (INTERCONNECT ClockGenBlock.gen_clk_out_0 Net_11.clock_0 (0.000:0.000:0.000))
+    (INTERCONNECT PSOC_Pin\(0\).pad_out PSOC_Pin\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT ClockBlock.udb_div_0 ClockGenBlock.gen_clk_in_0 (0.000:0.000:0.000))
+    (INTERCONNECT PSOC_Pin\(0\).pad_out PSOC_Pin\(0\)_PAD (0.000:0.000:0.000))
+    (INTERCONNECT PSOC_Pin\(0\)_PAD PSOC_Pin\(0\).pad_in (0.000:0.000:0.000))
+   )
+  )
+ )
+)
